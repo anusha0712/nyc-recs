@@ -4,12 +4,7 @@ import Masthead from "@/components/Masthead";
 import Penguin from "@/components/Penguin";
 import { PLACES } from "@/data/places";
 
-// ── Personalize me! ──────────────────────────────────────────────────────────
-const WELCOME_NOTE = `Welcome to New York, my loves!! 🗽🐧 I made you your very own summer guidebook — every
-spot in here is one I actually love and would drag you to myself. Read my notes, check the hours,
-and drag your favorites into a 4-day plan. Tap a penguin when you've been somewhere. Now GO —
-the city's yours. Eat everything. I love you. 💌`;
-// ─────────────────────────────────────────────────────────────────────────────
+// The editor's welcome note lives inline in the JSX below (see "From the Editor").
 
 export default function CoverPage() {
   const stat = {
@@ -70,7 +65,17 @@ export default function CoverPage() {
           </span>
           <div className="flex items-start gap-3">
             <Penguin className="h-16 w-14 shrink-0" accessory="sunglasses" title="Your editor-in-chief" />
-            <p className="font-serif text-[15px] leading-relaxed">{WELCOME_NOTE}</p>
+            <p className="font-serif text-[15px] leading-relaxed">
+              Welcome to New York!! 🗽🐧 Here are my favorite recs, with notes
+              wherever I deemed it necessary. In an attempt to not be an inflexible
+              loser, I&rsquo;ve left you plenty of space to build your own itinerary
+              and move things around to fit your schedule. I was too lazy to hook up
+              the Google API for live hours, so <em>please</em>{" "}
+              double-check times!
+              Drag your favorites into a 4-day plan, and reach out to your friendly
+              neighborhood concierge (me!) to help snag those reservations. Tap a
+              penguin when you&rsquo;ve been somewhere 💌
+            </p>
           </div>
         </section>
 
