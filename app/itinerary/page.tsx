@@ -4,7 +4,7 @@ import ItineraryBuilder from "@/components/itinerary/ItineraryBuilder";
 
 export const metadata: Metadata = {
   title: "Build Your Trip — The Daily Bite 🐧",
-  description: "Drag your favorite NYC spots into a 4-day plan, then share it or add it to your calendar.",
+  description: "Drag your favorite NYC spots into a 5-day plan, then share it or add it to your calendar.",
 };
 
 export default async function ItineraryPage({
@@ -19,7 +19,7 @@ export default async function ItineraryPage({
       <Masthead compact dateline="Section B · Your Itinerary" />
       <div className="mx-auto max-w-2xl px-4 py-5">
         <h2 className="font-display text-4xl uppercase leading-none sm:text-5xl">
-          Plan the <span className="text-park">4 days</span>
+          Plan the <span className="text-park">5 days</span>
         </h2>
         <p className="mt-1 font-serif italic text-ink/70">
           It saves automatically on this device. Rearrange until it’s perfect.

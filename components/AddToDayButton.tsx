@@ -62,7 +62,7 @@ export default function AddToDayButton({
             <p className="mb-2 font-mono text-[11px] font-bold uppercase tracking-wide text-ink/70">
               Add to which day?
             </p>
-            <div className="grid grid-cols-4 gap-1.5">
+            <div className="grid grid-cols-5 gap-1.5">
               {Array.from({ length: NUM_DAYS }, (_, i) => (
                 <button
                   key={i}

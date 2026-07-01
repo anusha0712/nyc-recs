@@ -23,7 +23,7 @@ import { decodeItinerary, countPlaces, itineraryIsEmpty } from "@/lib/share";
 import SortableStop from "@/components/itinerary/SortableStop";
 import ShareExport from "@/components/itinerary/ShareExport";
 
-const DAY_COLORS = ["bg-hotred", "bg-sky", "bg-park", "bg-grape"];
+const DAY_COLORS = ["bg-hotred", "bg-sky", "bg-park", "bg-grape", "bg-hotpink"];
 
 export default function ItineraryBuilder({ sharedParam }: { sharedParam?: string }) {
   const { itinerary, setItinerary, removeFromDay, addToDay, setDayOrder, hydrated } =
@@ -104,7 +104,7 @@ export default function ItineraryBuilder({ sharedParam }: { sharedParam?: string
       )}
 
       {/* Day tabs */}
-      <div className="grid grid-cols-4 gap-1.5">
+      <div className="grid grid-cols-5 gap-1.5">
         {Array.from({ length: NUM_DAYS }, (_, i) => {
           const count = (itinerary[i] ?? []).length;
           const active = i === activeDay;

@@ -26,7 +26,7 @@ const dmMono = DM_Mono({
 export const metadata: Metadata = {
   title: "The Daily Bite 🐧 — Samira & Ava's NYC Summer",
   description:
-    "A hand-picked, penguin-approved guide to New York City — recs, hours, notes, and a 4-day itinerary builder made just for you.",
+    "A hand-picked, penguin-approved guide to New York City — recs, hours, notes, and a 5-day itinerary builder made just for you.",
   manifest: "/manifest.json",
   icons: {
     icon: "/icon.svg",
@@ -56,7 +56,7 @@ export default function RootLayout({
       lang="en"
       className={`${anton.variable} ${fraunces.variable} ${dmMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col pb-20">
+      <body className="min-h-full flex flex-col pb-[calc(60px+env(safe-area-inset-bottom))]">
         {children}
         <MobileNav />
       </body>

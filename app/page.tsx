@@ -58,7 +58,7 @@ export default function CoverPage() {
         {/* Editor's welcome note */}
         <section className="relative mt-6 paper -rotate-[0.5deg] p-4 pt-6">
           <span
-            className="stamp absolute -right-2 -top-3 rotate-6 bg-paper px-2 py-1 text-xs"
+            className="stamp absolute -right-2 -top-3 z-10 rotate-6 bg-paper px-2 py-1 text-xs opacity-100 mix-blend-normal"
             aria-hidden
           >
             From the Editor
@@ -66,15 +66,15 @@ export default function CoverPage() {
           <div className="flex items-start gap-3">
             <Penguin className="h-16 w-14 shrink-0" accessory="sunglasses" title="Your editor-in-chief" />
             <p className="font-serif text-[15px] leading-relaxed">
-              Welcome to New York!! 🗽🐧 Here are my favorite recs, with notes
-              wherever I deemed it necessary. In an attempt to not be an inflexible
-              loser, I&rsquo;ve left you plenty of space to build your own itinerary
-              and move things around to fit your schedule. I was too lazy to hook up
-              the Google API for live hours, so <em>please</em>{" "}
-              double-check times!
-              Drag your favorites into a 4-day plan, and reach out to your friendly
-              neighborhood concierge (me!) to help snag those reservations. Tap a
-              penguin when you&rsquo;ve been somewhere 💌
+              Welcome to New York!! 🗽🐧 Here are my favorite recs with helpful
+              notes wherever I deemed it necessary! In my attempt to not be an
+              inflexible loser, I have provided some space to build your own
+              itinerary and move things around per your schedule. I was lazy to
+              connect google api for live hours so <em>please</em>{" "}
+              double-check times, drag your favorites into a 5-day plan and reach
+              out to your friendly neighborhood concierge (me!) to try and snag
+              reservations. Tap a penguin when you&rsquo;ve been somewhere &mdash;
+              and don&rsquo;t hate my bad vibecode effort ❤️ 💌
             </p>
           </div>
         </section>
@@ -90,7 +90,7 @@ export default function CoverPage() {
             <p className="font-mono text-[10px] uppercase tracking-wide">neighborhoods</p>
           </div>
           <div className="flex-1 border-2 border-ink bg-hotpink px-2 py-2 text-paper">
-            <p className="font-display text-3xl leading-none">4</p>
+            <p className="font-display text-3xl leading-none">5</p>
             <p className="font-mono text-[10px] uppercase tracking-wide">days to plan</p>
           </div>
         </div>
@@ -120,9 +120,6 @@ export default function CoverPage() {
           </Link>
         </nav>
 
-        <p className="mt-8 text-center font-mono text-[10px] uppercase tracking-widest text-ink/40">
-          Printed with love in NYC · est. this summer
-        </p>
       </div>
     </main>
   );

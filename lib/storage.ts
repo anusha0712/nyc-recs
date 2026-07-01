@@ -47,8 +47,8 @@ export function useLocalStorage<T>(
 }
 
 // ── Itinerary ────────────────────────────────────────────────────────────────
-// 4 days, each an ordered list of place IDs.
-export const NUM_DAYS = 4;
+// 5 days (the trip runs Jul 6–10), each an ordered list of place IDs.
+export const NUM_DAYS = 5;
 export type Itinerary = string[][]; // itinerary[dayIndex] = ordered place ids
 
 export const EMPTY_ITINERARY: Itinerary = Array.from({ length: NUM_DAYS }, () => []);
