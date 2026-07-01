@@ -3,220 +3,169 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The Daily Bite — Card Design Options</title>
+<title>The Daily Bite — Card Color Options (v2)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   :root{
     --cream:#f7f1e1; --paper:#fffaf0; --ink:#141210; --newsprint:#d9cfb8;
-    --taxi:#ffcf24; --hotred:#ff3b2f; --hotpink:#ff4d9d; --park:#1fa562; --sky:#2ea6e6; --grape:#6b4bd6;
+    --taxi:#ffcf24; --park:#1fa562;
+    /* MUTED placeholder category colors — final shades TBD after you pick a layout */
+    --c-eats:#d9543f; --c-drinks:#c95c86; --c-coffee:#7a68c9; --c-sweets:#2bab9b;
     --display:'Anton',Impact,sans-serif; --serif:'Fraunces',Georgia,serif; --mono:'DM Mono',monospace;
   }
   *{box-sizing:border-box}
   body{
     margin:0; background-color:var(--cream); color:var(--ink); font-family:var(--mono);
     background-image:radial-gradient(var(--newsprint) .5px, transparent .5px),radial-gradient(var(--newsprint) .5px, var(--cream) .5px);
-    background-size:20px 20px; background-position:0 0,10px 10px; padding:24px 16px 80px;
+    background-size:20px 20px; background-position:0 0,10px 10px; padding:20px 0 80px;
   }
-  header.pagehead{max-width:900px;margin:0 auto 8px}
-  .masthead{font-family:var(--display);text-transform:uppercase;font-size:44px;line-height:.9;text-align:center;border-bottom:4px double var(--ink);padding-bottom:8px}
-  .sub{font-family:var(--serif);font-style:italic;text-align:center;color:#6b6459;margin:8px 0 24px}
-  .note{max-width:900px;margin:0 auto 28px;border:2px solid var(--ink);background:var(--paper);box-shadow:4px 4px 0 0 var(--ink);padding:12px 14px;font-size:13px}
-  .grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px}
-  .variant{}
-  .variant h2{font-family:var(--display);text-transform:uppercase;font-size:20px;margin:0 0 2px}
-  .variant .desc{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6b6459;margin:0 0 12px}
+  .wrap{max-width:430px;margin:0 auto;padding:0 20px}
+  .masthead{font-family:var(--display);text-transform:uppercase;font-size:34px;line-height:.9;text-align:center;border-bottom:4px double var(--ink);padding-bottom:8px}
+  .sub{font-family:var(--serif);font-style:italic;text-align:center;color:#6b6459;margin:8px 0 16px;font-size:14px}
+  .callout{border:2px solid var(--ink);background:var(--paper);box-shadow:4px 4px 0 0 var(--ink);padding:10px 12px;font-size:12px;margin-bottom:26px}
+  .opt{margin-bottom:34px}
+  .opt h2{font-family:var(--display);text-transform:uppercase;font-size:19px;margin:0}
+  .opt .desc{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#6b6459;margin:1px 0 12px}
 
-  /* shared card bits */
-  .card{border:2px solid var(--ink);box-shadow:4px 4px 0 0 var(--ink);background:var(--paper);overflow:hidden}
-  .emoji-chip{display:grid;place-items:center;width:36px;height:36px;border:2px solid var(--ink);font-size:18px;background:var(--paper);flex:0 0 auto}
-  .name{font-family:var(--display);text-transform:uppercase;font-size:22px;line-height:.95;margin:0}
-  .hood{font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;font-size:11px;margin:4px 0 0}
-  .body{padding:12px}
-  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
-  .badge{border:2px solid var(--ink);padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;font-family:var(--mono)}
-  .badge.open{background:var(--park);color:var(--paper)}
-  .badge.closed{background:var(--ink);color:var(--paper)}
-  .price{font-family:var(--mono);font-weight:700;font-size:13px}
-  .price .on{color:var(--park)} .price .off{color:#bbb}
-  .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-  .tag{border:1px solid rgba(20,18,16,.4);padding:1px 6px;font-size:10px;font-family:var(--mono);color:#6b6459}
-  .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;border-top:2px dashed rgba(20,18,16,.3);padding-top:10px}
+  /* ===== EXACT compact-card styles (match the real component) ===== */
+  .card{background:var(--paper);border:2px solid var(--ink);box-shadow:4px 4px 0 0 var(--ink);padding:12px;position:relative}
+  .headrow{display:flex;gap:10px;align-items:flex-start}
+  .chip{width:36px;height:36px;flex:0 0 auto;border:2px solid var(--ink);display:grid;place-items:center;font-size:18px;background:var(--paper)}
+  .name{font-family:var(--display);text-transform:uppercase;font-size:20px;line-height:.95;color:var(--ink);margin:0}
+  .hood{font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;font-size:11px;color:rgba(20,18,16,.7);margin:4px 0 0}
+  .badges{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+  .ob{border:2px solid var(--ink);padding:1px 7px;font-family:var(--mono);font-weight:700;font-size:11px;text-transform:uppercase;display:inline-flex;gap:5px;align-items:center}
+  .ob.open{background:var(--park);color:var(--paper)} .ob.closed{background:var(--ink);color:var(--paper)}
+  .ob .dot{width:8px;height:8px;border-radius:50%;background:var(--paper)}
+  .price{font-family:var(--mono);font-weight:700;font-size:13px} .price .on{color:var(--park)} .price .off{color:#c3bca8}
+  .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .tag{border:1px solid rgba(20,18,16,.4);padding:1px 6px;font-family:var(--mono);font-size:10px;text-transform:lowercase;color:rgba(20,18,16,.7)}
+  .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;border-top:2px dashed rgba(20,18,16,.3);padding-top:10px}
   .btn{border:2px solid var(--ink);padding:6px 12px;font-family:var(--mono);font-weight:700;text-transform:uppercase;font-size:11px}
   .btn.add{background:var(--taxi)} .btn.been{background:var(--paper)}
-  .halftone{background-image:radial-gradient(rgba(20,18,16,.35) 1.1px, transparent 1.2px);background-size:6px 6px}
 
-  /* ---- Variant 1: Colored Header ---- */
-  .v1 .head{padding:12px;display:flex;gap:10px;align-items:flex-start}
-  .v1 .name,.v1 .hood{color:var(--cream)}
-  .v1 .hood{opacity:.85}
-  .v1 .emoji-chip{background:var(--paper)}
-
-  /* ---- Variant 2: Header + Halftone ---- */
-  .v2 .head{padding:12px;display:flex;gap:10px;align-items:flex-start;position:relative}
-  .v2 .head .ht{position:absolute;inset:0;opacity:.25}
-  .v2 .name,.v2 .hood{color:var(--cream);position:relative}
-  .v2 .emoji-chip{position:relative}
-
-  /* ---- Variant 3: Ticket Stub ---- */
-  .v3 .head{padding:12px;display:flex;gap:10px;align-items:flex-start;border-bottom:3px dashed var(--ink)}
-  .v3 .name,.v3 .hood{color:var(--cream)}
-  .v3 .card{position:relative}
-  .v3 .notch{position:absolute;width:16px;height:16px;border-radius:50%;background:var(--cream);border:2px solid var(--ink)}
-
-  /* ---- Variant 4: Emoji Badge Pop ---- */
-  .v4 .head{padding:16px 12px 12px;position:relative}
-  .v4 .emoji-chip{position:absolute;top:-16px;left:12px;width:44px;height:44px;border-radius:50%;background:var(--paper);box-shadow:2px 2px 0 0 var(--ink)}
-  .v4 .head .txt{margin-top:20px}
-  .v4 .name,.v4 .hood{color:var(--cream)}
-
-  /* ---- Variant 5: Full Color Frame ---- */
-  .v5 .card{background:transparent}
-  .v5 .frame{padding:10px}
-  .v5 .inner{background:var(--paper);border:2px solid var(--ink)}
-  .v5 .head{padding:10px 12px}
-  .v5 .name{color:var(--cream)}
-  .v5 .headbar{padding:8px 12px}
-  .v5 .hood{color:var(--ink)}
-  .v5 .body{padding:12px}
-
-  /* ---- Variant 6: Side Color Spine ---- */
-  .v6 .card{display:flex}
-  .v6 .spine{width:14px;flex:0 0 auto;border-right:2px solid var(--ink)}
-  .v6 .main{flex:1;min-width:0}
-  .v6 .head{padding:12px;display:flex;gap:10px;align-items:flex-start}
+  /* ===== color-accent variations ===== */
+  /* A: colored emoji chip only */
+  .vA .chip{background:var(--c);border-color:var(--ink)}
+  /* B: left color spine */
+  .vB.card{padding-left:0;display:flex;gap:0}
+  .vB .spine{width:12px;flex:0 0 auto;background:var(--c);border-right:2px solid var(--ink)}
+  .vB .inner{padding:12px;flex:1;min-width:0}
+  /* C: top color strip */
+  .vC.card{padding-top:0}
+  .vC .strip{height:12px;background:var(--c);border-bottom:2px solid var(--ink);margin:0 -12px 12px}
+  /* D: colored category pill */
+  .vD .pill{display:inline-flex;align-items:center;gap:5px;background:var(--c);border:2px solid var(--ink);color:var(--ink);padding:2px 8px;font-family:var(--mono);font-weight:700;font-size:10px;text-transform:uppercase;margin-bottom:8px}
+  .vD .name{margin-top:0}
+  /* E: highlighter swipe under the name */
+  .vE .name{display:inline;background-image:linear-gradient(var(--c),var(--c));background-repeat:no-repeat;background-position:0 82%;background-size:100% 42%;padding:0 2px}
+  /* F: colored card border */
+  .vF.card{border-color:var(--c);border-width:3px}
+  .vF .chip{border-color:var(--c);border-width:3px}
+  /* G: small corner tab */
+  .vG .tab{position:absolute;top:0;right:0;background:var(--c);border-left:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:2px 8px;font-family:var(--mono);font-weight:700;font-size:11px}
 </style>
 </head>
 <body>
-  <header class="pagehead">
-    <div class="masthead">Card Design Options</div>
-    <p class="sub">Pick your favorite — reply with the number. Each shows the category color filling the header down through the neighborhood/cuisine line.</p>
-  </header>
-
-  <div class="note">
-    <strong>Category → color:</strong> Eats = red · Drinks = pink · Coffee = purple · Sweets = yellow · (each card below uses a different color just to show the range). The bottom half (open badge, price, tags, buttons) stays on cream paper in every option.
+<div class="wrap">
+  <div class="masthead">Card Color — Take 2</div>
+  <p class="sub">Same compact card, just different ways to add the category color. Pick a number (mix welcome).</p>
+  <div class="callout">
+    <strong>Note:</strong> colors here are <em>muted placeholders</em> — we'll tune the exact shades after you pick a layout. Cards are shown one-per-row with wider spacing, like mobile. Each uses a different category color to show range: <b>Eats</b>=red · <b>Drinks</b>=rose · <b>Coffee</b>=purple · <b>Sweets</b>=teal (no yellow — that's the Add-to-trip button).
   </div>
 
-  <div class="grid">
-
-    <!-- V1 -->
-    <div class="variant v1">
-      <h2>1 · Colored Header</h2>
-      <p class="desc">Solid category color, cream text</p>
-      <div class="card">
-        <div class="head" style="background:var(--hotred)">
-          <span class="emoji-chip">🍽️</span>
-          <div><h3 class="name">Katz's Delicatessen</h3><p class="hood">Lower East Side · Jewish deli</p></div>
-        </div>
-        <div class="body">
-          <div class="row"><span class="badge open">● Open · closes 10:30 PM</span><span class="price"><span class="on">$$</span><span class="off">$$</span></span></div>
-          <div class="tags"><span class="tag">#pastrami</span><span class="tag">#iconic</span><span class="tag">#lunch</span></div>
-          <div class="actions"><span class="btn add">＋ Add to trip</span><span class="btn been">○ Been there?</span></div>
-        </div>
-      </div>
+  <!-- A -->
+  <div class="opt">
+    <h2>A · Colored emoji chip only</h2>
+    <p class="desc">Most subtle — just the little square</p>
+    <div class="card vA" style="--c:var(--c-eats)">
+      <div class="headrow"><span class="chip">🍽️</span><div><h3 class="name">Katz's Delicatessen</h3><p class="hood">Lower East Side · Jewish deli</p></div></div>
+      <div class="badges"><span class="ob open"><span class="dot"></span>Open · closes 10:30 PM</span><span class="price"><span class="on">$$</span><span class="off">$$</span></span></div>
+      <div class="tags"><span class="tag">#pastrami</span><span class="tag">#iconic</span><span class="tag">#lunch</span></div>
+      <div class="actions"><span class="btn add">＋ Add to trip</span><span class="btn been">○ Been there?</span></div>
     </div>
-
-    <!-- V2 -->
-    <div class="variant v2">
-      <h2>2 · Header + Halftone</h2>
-      <p class="desc">Colored header w/ printed dots</p>
-      <div class="card">
-        <div class="head" style="background:var(--grape)">
-          <div class="ht halftone"></div>
-          <span class="emoji-chip">☕️</span>
-          <div><h3 class="name">La Cabra</h3><p class="hood">East Village · Coffee &amp; bakery</p></div>
-        </div>
-        <div class="body">
-          <div class="row"><span class="badge open">● Open · closes 6 PM</span><span class="price"><span class="on">$$</span><span class="off">$$</span></span></div>
-          <div class="tags"><span class="tag">#cozy</span><span class="tag">#grab &amp; go</span><span class="tag">#sweet tooth</span></div>
-          <div class="actions"><span class="btn add">＋ Add to trip</span><span class="btn been">○ Been there?</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- V3 -->
-    <div class="variant v3">
-      <h2>3 · Ticket Stub</h2>
-      <p class="desc">Colored header, perforated tear</p>
-      <div class="card">
-        <span class="notch" style="left:-9px;top:56px"></span>
-        <span class="notch" style="right:-9px;top:56px"></span>
-        <div class="head" style="background:var(--sky)">
-          <span class="emoji-chip">🍸</span>
-          <div><h3 class="name">Double Chicken Please</h3><p class="hood">Lower East Side · Cocktail bar</p></div>
-        </div>
-        <div class="body">
-          <div class="row"><span class="badge closed">● Closed · opens 5 PM</span><span class="price"><span class="on">$$$</span><span class="off">$</span></span></div>
-          <div class="tags"><span class="tag">#reservation</span><span class="tag">#iconic</span><span class="tag">#date night</span></div>
-          <div class="actions"><span class="btn add">＋ Add to trip</span><span class="btn been">○ Been there?</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- V4 -->
-    <div class="variant v4">
-      <h2>4 · Emoji Badge Pop</h2>
-      <p class="desc">Round emoji badge over color</p>
-      <div class="card">
-        <div class="head" style="background:var(--hotpink)">
-          <span class="emoji-chip">🍰</span>
-          <div class="txt"><h3 class="name">Librae Bakery</h3><p class="hood">East Village · Bakery</p></div>
-        </div>
-        <div class="body">
-          <div class="row"><span class="badge open">● Open · closes 4:30 PM</span><span class="price"><span class="on">$$</span><span class="off">$$</span></span></div>
-          <div class="tags"><span class="tag">#cozy</span><span class="tag">#sweet tooth</span><span class="tag">#bakery</span></div>
-          <div class="actions"><span class="btn add">＋ Add to trip</span><span class="btn been">○ Been there?</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- V5 -->
-    <div class="variant v5">
-      <h2>5 · Full Color Frame</h2>
-      <p class="desc">Whole card colored, cream inset</p>
-      <div class="card" style="background:var(--park)">
-        <div class="frame">
-          <div class="inner">
-            <div class="head" style="background:var(--park)">
-              <div style="display:flex;gap:10px;align-items:flex-start">
-                <span class="emoji-chip">🌳</span>
-                <h3 class="name">The High Line</h3>
-              </div>
-            </div>
-            <div class="headbar" style="background:var(--paper);border-top:2px solid var(--ink)">
-              <p class="hood">Chelsea · Park &amp; walk</p>
-            </div>
-            <div class="body">
-              <div class="row"><span class="badge open">● Open · closes 10 PM</span><span class="price"><span class="on">$</span><span class="off">$$$</span></span></div>
-              <div class="tags"><span class="tag">#views</span><span class="tag">#free</span><span class="tag">#golden hour</span></div>
-              <div class="actions"><span class="btn add">＋ Add to trip</span><span class="btn been">○ Been there?</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- V6 -->
-    <div class="variant v6">
-      <h2>6 · Side Color Spine</h2>
-      <p class="desc">Header color + a colored spine</p>
-      <div class="card">
-        <div class="spine" style="background:var(--taxi)"></div>
-        <div class="main">
-          <div class="head" style="background:var(--taxi)">
-            <span class="emoji-chip">🍕</span>
-            <div><h3 class="name" style="color:var(--ink)">L'Industrie Pizzeria</h3><p class="hood" style="color:var(--ink)">Williamsburg · Pizza</p></div>
-          </div>
-          <div class="body">
-            <div class="row"><span class="badge open">● Open · closes 10 PM</span><span class="price"><span class="on">$</span><span class="off">$$$</span></span></div>
-            <div class="tags"><span class="tag">#cheap eats</span><span class="tag">#iconic</span><span class="tag">#quick</span></div>
-            <div class="actions"><span class="btn add">＋ Add to trip</span><span class="btn been">○ Been there?</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
+
+  <!-- B -->
+  <div class="opt">
+    <h2>B · Left color spine</h2>
+    <p class="desc">A thin colored bar down the left edge</p>
+    <div class="card vB" style="--c:var(--c-drinks)">
+      <div class="spine"></div>
+      <div class="inner">
+        <div class="headrow"><span class="chip">🍸</span><div><h3 class="name">Double Chicken Please</h3><p class="hood">Lower East Side · Cocktail bar</p></div></div>
+        <div class="badges"><span class="ob closed"><span class="dot" style="background:var(--c-eats)"></span>Closed · opens 5 PM</span><span class="price"><span class="on">$$$</span><span class="off">$</span></span></div>
+        <div class="tags"><span class="tag">#reservation</span><span class="tag">#iconic</span><span class="tag">#date night</span></div>
+        <div class="actions"><span class="btn add">＋ Add to trip</span><span class="btn been">○ Been there?</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="opt">
+    <h2>C · Top color strip</h2>
+    <p class="desc">A slim colored band across the top</p>
+    <div class="card vC" style="--c:var(--c-coffee)">
+      <div class="strip"></div>
+      <div class="headrow"><span class="chip">☕️</span><div><h3 class="name">La Cabra</h3><p class="hood">East Village · Coffee &amp; bakery</p></div></div>
+      <div class="badges"><span class="ob open"><span class="dot"></span>Open · closes 6 PM</span><span class="price"><span class="on">$$</span><span class="off">$$</span></span></div>
+      <div class="tags"><span class="tag">#cozy</span><span class="tag">#grab &amp; go</span><span class="tag">#sweet tooth</span></div>
+      <div class="actions"><span class="btn add">＋ Add to trip</span><span class="btn been">○ Been there?</span></div>
+    </div>
+  </div>
+
+  <!-- D -->
+  <div class="opt">
+    <h2>D · Colored category pill</h2>
+    <p class="desc">A little color-labelled tag up top</p>
+    <div class="card vD" style="--c:var(--c-sweets)">
+      <span class="pill">🍰 Sweets</span>
+      <div class="headrow"><div><h3 class="name">Librae Bakery</h3><p class="hood">East Village · Bakery</p></div></div>
+      <div class="badges"><span class="ob open"><span class="dot"></span>Open · closes 4:30 PM</span><span class="price"><span class="on">$$</span><span class="off">$$</span></span></div>
+      <div class="tags"><span class="tag">#cozy</span><span class="tag">#sweet tooth</span><span class="tag">#bakery</span></div>
+      <div class="actions"><span class="btn add">＋ Add to trip</span><span class="btn been">○ Been there?</span></div>
+    </div>
+  </div>
+
+  <!-- E -->
+  <div class="opt">
+    <h2>E · Highlighter under the name</h2>
+    <p class="desc">A marker swipe of color on the title</p>
+    <div class="card vE" style="--c:var(--c-eats)">
+      <div class="headrow"><span class="chip">🍽️</span><div><h3 class="name">Semma</h3><p class="hood">West Village · South Indian</p></div></div>
+      <div class="badges"><span class="ob closed"><span class="dot" style="background:var(--c-eats)"></span>Closed · opens 5 PM</span><span class="price"><span class="on">$$$$</span></span></div>
+      <div class="tags"><span class="tag">#michelin</span><span class="tag">#reservation</span><span class="tag">#date night</span></div>
+      <div class="actions"><span class="btn add">＋ Add to trip</span><span class="btn been">○ Been there?</span></div>
+    </div>
+  </div>
+
+  <!-- F -->
+  <div class="opt">
+    <h2>F · Colored card border</h2>
+    <p class="desc">The whole outline takes the color</p>
+    <div class="card vF" style="--c:var(--c-drinks)">
+      <div class="headrow"><span class="chip">🍸</span><div><h3 class="name">Superbueno</h3><p class="hood">East Village · Mexican cocktails</p></div></div>
+      <div class="badges"><span class="ob open"><span class="dot"></span>Open · closes 2 AM</span><span class="price"><span class="on">$$$</span><span class="off">$</span></span></div>
+      <div class="tags"><span class="tag">#scene</span><span class="tag">#late night</span><span class="tag">#date night</span></div>
+      <div class="actions"><span class="btn add">＋ Add to trip</span><span class="btn been">○ Been there?</span></div>
+    </div>
+  </div>
+
+  <!-- G -->
+  <div class="opt">
+    <h2>G · Corner tab</h2>
+    <p class="desc">A small folded color tab, top-right</p>
+    <div class="card vG" style="--c:var(--c-coffee)">
+      <span class="tab">☕️</span>
+      <div class="headrow"><span class="chip">☕️</span><div><h3 class="name">Kolkata Chai Co.</h3><p class="hood">East Village · Chai cafe</p></div></div>
+      <div class="badges"><span class="ob open"><span class="dot"></span>Open · closes 7 PM</span><span class="price"><span class="on">$</span><span class="off">$$$</span></span></div>
+      <div class="tags"><span class="tag">#chai</span><span class="tag">#cozy</span><span class="tag">#walk-in</span></div>
+      <div class="actions"><span class="btn add">＋ Add to trip</span><span class="btn been">○ Been there?</span></div>
+    </div>
+  </div>
+
+</div>
 </body>
 </html>

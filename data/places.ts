@@ -52,8 +52,8 @@ export const CATEGORY_META: Record<
   { label: string; emoji: string; color: string }
 > = {
   food: { label: "Eats", emoji: "🍽️", color: "hotred" },
-  sweets: { label: "Sweets", emoji: "🍰", color: "taxi" },
-  coffee: { label: "Coffee", emoji: "☕️", color: "grape" },
+  sweets: { label: "Misc", emoji: "🍰", color: "taxi" },
+  coffee: { label: "Beverages", emoji: "☕️", color: "grape" },
   drinks: { label: "Drinks", emoji: "🍸", color: "hotpink" },
   sight: { label: "Sights", emoji: "🗽", color: "sky" },
   museum: { label: "Museums", emoji: "🖼️", color: "grape" },

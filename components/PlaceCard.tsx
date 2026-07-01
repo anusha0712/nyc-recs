@@ -42,15 +42,11 @@ export default function PlaceCard({
       )}
 
       <Link href={`/place/${place.id}`} className="block">
-        {/* Full-bleed colored header (only this is new — the rest matches the
-            compact card exactly). Negative margins pull it to the card edges. */}
-        <div
-          className={`-mx-3 -mt-3 mb-2.5 flex items-start gap-2.5 border-b-2 border-ink px-3 py-2.5 ${
-            CATEGORY_BG[meta.color] ?? "bg-sky"
-          }`}
-        >
+        <div className="flex items-start gap-2.5">
           <span
-            className="grid h-9 w-9 shrink-0 place-items-center border-2 border-ink bg-paper text-lg"
+            className={`grid h-9 w-9 shrink-0 place-items-center border-2 border-ink text-lg ${
+              CATEGORY_BG[meta.color] ?? "bg-sky"
+            }`}
             aria-hidden
           >
             {meta.emoji}
@@ -66,7 +62,7 @@ export default function PlaceCard({
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="mt-2 flex flex-wrap items-center gap-2">
           <OpenNowBadge place={place} />
           <PriceTag level={place.priceLevel} />
         </div>

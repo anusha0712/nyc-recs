@@ -79,7 +79,7 @@ export default function RecsBrowser() {
 
       {/* Category chips — wrap to fit the width, no horizontal scroll */}
       <div className="mt-3 flex flex-wrap gap-2">
-        <Chip active={favOnly} tone="fav" onClick={() => setFavOnly((v) => !v)}>
+        <Chip active={favOnly} onClick={() => setFavOnly((v) => !v)}>
           ★ Favs
         </Chip>
         <Chip active={cat === "all" && !favOnly} onClick={() => { setCat("all"); }}>
@@ -152,7 +152,7 @@ export default function RecsBrowser() {
           </p>
         </div>
       ) : (
-        <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="mt-3 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {results.map((p, i) => (
             <PlaceCard key={p.id} place={p} index={i} />
           ))}
@@ -165,23 +165,19 @@ export default function RecsBrowser() {
 function Chip({
   active,
   onClick,
-  tone = "normal",
   children,
 }: {
   active: boolean;
   onClick: () => void;
-  tone?: "normal" | "fav";
   children: React.ReactNode;
 }) {
-  const activeCls =
-    tone === "fav" ? "bg-taxi text-ink shadow-[2px_2px_0_0_#141210]" : "bg-hotpink text-paper shadow-[2px_2px_0_0_#141210]";
   return (
     <button
       type="button"
       onClick={onClick}
       aria-pressed={active}
       className={`whitespace-nowrap border-2 border-ink px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-wide transition-transform active:scale-95 ${
-        active ? activeCls : "bg-paper"
+        active ? "bg-ink text-paper shadow-[2px_2px_0_0_#141210]" : "bg-paper"
       }`}
     >
       {children}
