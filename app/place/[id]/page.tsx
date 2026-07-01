@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { PLACES, CATEGORY_META, getPlace } from "@/data/places";
 import Masthead from "@/components/Masthead";
 import PlacePhoto from "@/components/PlacePhoto";
-import PenguinRating from "@/components/PenguinRating";
 import PriceTag from "@/components/PriceTag";
 import OpenNowBadge from "@/components/OpenNowBadge";
 import HoursTable from "@/components/HoursTable";
@@ -58,6 +57,11 @@ export default async function PlacePage({
             {meta.emoji} {meta.label}
           </span>
           <OpenNowBadge place={place} />
+          {place.isFav && (
+            <span className="border-2 border-ink bg-taxi px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide">
+              ★ Fav
+            </span>
+          )}
         </div>
         <h1 className="mt-2 font-display text-5xl uppercase leading-[0.9] tracking-tight sm:text-6xl">
           {place.name}
@@ -66,8 +70,7 @@ export default async function PlacePage({
           {place.neighborhood}
           {place.cuisine ? ` · ${place.cuisine}` : ""}
         </p>
-        <div className="mt-2 flex items-center gap-4">
-          <PenguinRating rating={place.penguinRating} size="lg" />
+        <div className="mt-2">
           <PriceTag level={place.priceLevel} />
         </div>
 
@@ -83,13 +86,18 @@ export default async function PlacePage({
           </div>
         </figure>
 
-        {/* Editor's Note */}
-        <section className="relative mt-6 paper bg-taxi/30 p-4 pt-6">
-          <span className="stamp absolute -right-2 -top-3 rotate-3 bg-paper px-2 py-1 text-xs" aria-hidden>
-            Editor’s Note
-          </span>
-          <p className="font-serif text-[16px] leading-relaxed">{place.authorNote}</p>
-        </section>
+        {/* Editor's Note — hidden when there's no note */}
+        {place.authorNote.trim() && (
+          <section className="relative mt-6 paper bg-taxi/30 p-4 pt-6">
+            <span
+              className="stamp absolute -right-2 -top-3 z-10 rotate-3 bg-paper px-2 py-1 text-xs opacity-100 mix-blend-normal"
+              aria-hidden
+            >
+              Editor’s Note
+            </span>
+            <p className="font-serif text-[16px] leading-relaxed">{place.authorNote}</p>
+          </section>
+        )}
 
         {/* Tags */}
         {place.tags.length > 0 && (
@@ -105,17 +113,6 @@ export default async function PlacePage({
           </div>
         )}
 
-        {/* Quick facts */}
-        <div className="mt-4 grid grid-cols-2 gap-2">
-          {place.suggestedTimeMins && (
-            <Fact label="Plan for" value={`~${Math.round(place.suggestedTimeMins / 15) * 15} min`} />
-          )}
-          <Fact
-            label="Reservation"
-            value={place.reservationNeeded ? "Recommended" : "Walk-in ok"}
-          />
-        </div>
-
         {/* Hours */}
         <section className="mt-6">
           <h2 className="font-display text-2xl uppercase">Hours</h2>
@@ -129,8 +126,10 @@ export default async function PlacePage({
 
         {/* Links */}
         <section className="mt-6 grid gap-2">
+          {place.reservationUrl && (
+            <LinkRow href={place.reservationUrl} label="Book a table" emoji="🍽️" />
+          )}
           {place.website && <LinkRow href={place.website} label="Website" emoji="🔗" />}
-          {place.menuUrl && <LinkRow href={place.menuUrl} label="See the menu" emoji="📋" />}
           <LinkRow href={place.googleMapsUrl} label="Open in Google Maps" emoji="📍" />
         </section>
 
@@ -141,15 +140,6 @@ export default async function PlacePage({
         </div>
       </article>
     </main>
-  );
-}
-
-function Fact({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="border-2 border-ink bg-paper px-3 py-2">
-      <p className="font-mono text-[10px] uppercase tracking-widest text-ink/50">{label}</p>
-      <p className="font-display text-xl uppercase leading-none">{value}</p>
-    </div>
   );
 }
 

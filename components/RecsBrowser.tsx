@@ -12,7 +12,7 @@ import {
 import { isOpenNow } from "@/lib/hours";
 import PlaceCard from "@/components/PlaceCard";
 
-type SortKey = "rating" | "az" | "price";
+type SortKey = "fav" | "az" | "price";
 
 export default function RecsBrowser() {
   const [query, setQuery] = useState("");
@@ -20,11 +20,13 @@ export default function RecsBrowser() {
   const [hood, setHood] = useState<string>("all");
   const [cuisine, setCuisine] = useState<string>("all");
   const [openOnly, setOpenOnly] = useState(false);
-  const [sort, setSort] = useState<SortKey>("rating");
+  const [favOnly, setFavOnly] = useState(false);
+  const [sort, setSort] = useState<SortKey>("fav");
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
-    let list = PLACES.filter((p) => {
+    const list = PLACES.filter((p) => {
+      if (favOnly && !p.isFav) return false;
       if (cat !== "all" && p.category !== cat) return false;
       if (hood !== "all" && p.neighborhood !== hood) return false;
       if (cuisine !== "all" && p.cuisine !== cuisine) return false;
@@ -38,44 +40,50 @@ export default function RecsBrowser() {
       return true;
     });
 
-    list = [...list].sort((a, b) => {
+    return [...list].sort((a, b) => {
       if (sort === "az") return a.name.localeCompare(b.name);
       if (sort === "price") return a.priceLevel - b.priceLevel;
-      return b.penguinRating - a.penguinRating;
+      // fav: favorites first, then alphabetical
+      return Number(Boolean(b.isFav)) - Number(Boolean(a.isFav)) || a.name.localeCompare(b.name);
     });
-    return list;
-  }, [query, cat, hood, cuisine, openOnly, sort]);
+  }, [query, cat, hood, cuisine, openOnly, favOnly, sort]);
 
-  const activeFilters = [cat !== "all", hood !== "all", cuisine !== "all", openOnly].filter(
-    Boolean,
-  ).length;
+  const activeFilters = [
+    cat !== "all",
+    hood !== "all",
+    cuisine !== "all",
+    openOnly,
+    favOnly,
+  ].filter(Boolean).length;
 
   const reset = () => {
     setCat("all");
     setHood("all");
     setCuisine("all");
     setOpenOnly(false);
+    setFavOnly(false);
     setQuery("");
   };
 
   return (
     <div>
       {/* Search */}
-      <div className="relative">
-        <input
-          type="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search spots, food, vibes…"
-          aria-label="Search recommendations"
-          className="w-full border-2 border-ink bg-paper px-3 py-3 font-mono text-sm shadow-[3px_3px_0_0_#141210] outline-none placeholder:text-ink/40 focus:bg-cream"
-        />
-      </div>
+      <input
+        type="search"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search spots, food, vibes…"
+        aria-label="Search recommendations"
+        className="w-full border-2 border-ink bg-paper px-3 py-3 font-mono text-sm shadow-[3px_3px_0_0_#141210] outline-none placeholder:text-ink/40 focus:bg-cream"
+      />
 
-      {/* Category chips */}
-      <div className="mt-3 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <Chip active={cat === "all"} onClick={() => setCat("all")}>
-          ★ All
+      {/* Category chips — wrap to fit the width, no horizontal scroll */}
+      <div className="mt-3 flex flex-wrap gap-2">
+        <Chip active={favOnly} tone="fav" onClick={() => setFavOnly((v) => !v)}>
+          ★ Favs
+        </Chip>
+        <Chip active={cat === "all" && !favOnly} onClick={() => { setCat("all"); }}>
+          All
         </Chip>
         {CATEGORIES.map((c) => (
           <Chip key={c} active={cat === c} onClick={() => setCat(c)}>
@@ -105,7 +113,7 @@ export default function RecsBrowser() {
           </Select>
         )}
         <Select value={sort} onChange={(v) => setSort(v as SortKey)} label="Sort">
-          <option value="rating">Top rated</option>
+          <option value="fav">Top picks</option>
           <option value="az">A–Z</option>
           <option value="price">$ Low→High</option>
         </Select>
@@ -144,7 +152,7 @@ export default function RecsBrowser() {
           </p>
         </div>
       ) : (
-        <div className="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {results.map((p, i) => (
             <PlaceCard key={p.id} place={p} index={i} />
           ))}
@@ -157,19 +165,23 @@ export default function RecsBrowser() {
 function Chip({
   active,
   onClick,
+  tone = "normal",
   children,
 }: {
   active: boolean;
   onClick: () => void;
+  tone?: "normal" | "fav";
   children: React.ReactNode;
 }) {
+  const activeCls =
+    tone === "fav" ? "bg-taxi text-ink shadow-[2px_2px_0_0_#141210]" : "bg-hotpink text-paper shadow-[2px_2px_0_0_#141210]";
   return (
     <button
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className={`shrink-0 whitespace-nowrap border-2 border-ink px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-wide transition-transform active:scale-95 ${
-        active ? "bg-hotpink text-paper shadow-[2px_2px_0_0_#141210]" : "bg-paper"
+      className={`whitespace-nowrap border-2 border-ink px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-wide transition-transform active:scale-95 ${
+        active ? activeCls : "bg-paper"
       }`}
     >
       {children}

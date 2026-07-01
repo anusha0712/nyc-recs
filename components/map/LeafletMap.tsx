@@ -65,8 +65,9 @@ export default function LeafletMap({ places }: { places: Place[] }) {
                 {p.neighborhood}
                 {p.cuisine ? ` · ${p.cuisine}` : ""}
               </div>
-              <div style={{ marginTop: 4 }}>
-                {"🐧".repeat(Math.round(p.penguinRating))}
+              <div style={{ marginTop: 4, fontWeight: 700 }}>
+                {"$".repeat(p.priceLevel)}
+                {p.isFav ? "  ★ Fav" : ""}
               </div>
               <a
                 href={`/place/${p.id}`}

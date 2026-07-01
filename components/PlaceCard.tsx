@@ -1,14 +1,22 @@
 import Link from "next/link";
 import { CATEGORY_META, type Place } from "@/data/places";
-import PlacePhoto from "@/components/PlacePhoto";
-import PenguinRating from "@/components/PenguinRating";
 import PriceTag from "@/components/PriceTag";
 import OpenNowBadge from "@/components/OpenNowBadge";
 import AddToDayButton from "@/components/AddToDayButton";
 import BeenThereStamp from "@/components/BeenThereStamp";
 
+// Full class strings so Tailwind's JIT sees them (no dynamic concatenation).
+const CATEGORY_BG: Record<string, string> = {
+  hotred: "bg-hotred",
+  hotpink: "bg-hotpink",
+  grape: "bg-grape",
+  sky: "bg-sky",
+  park: "bg-park",
+  taxi: "bg-taxi",
+};
+
 // Alternating slight tilt so the grid reads like pinned newspaper clippings.
-const TILTS = ["-rotate-1", "rotate-1", "rotate-0", "-rotate-2", "rotate-2"];
+const TILTS = ["-rotate-1", "rotate-1", "rotate-0", "-rotate-1", "rotate-1"];
 
 export default function PlaceCard({
   place,
@@ -22,55 +30,62 @@ export default function PlaceCard({
 
   return (
     <article
-      className={`paper relative ${tilt} transition-transform duration-150 hover:rotate-0 hover:-translate-y-0.5`}
+      className={`paper relative ${tilt} p-3 transition-transform duration-150 hover:rotate-0 hover:-translate-y-0.5`}
     >
-      {/* tape strip */}
-      <span
-        className="tape absolute -top-2 left-1/2 z-10 h-4 w-16 -translate-x-1/2 -rotate-2"
-        aria-hidden
-      />
+      {place.isFav && (
+        <span
+          className="stamp absolute -right-2 -top-3 z-10 rotate-6 bg-paper px-2 py-0.5 text-[11px] opacity-100 mix-blend-normal"
+          aria-label="Anusha's favorite"
+        >
+          ★ Fav
+        </span>
+      )}
 
       <Link href={`/place/${place.id}`} className="block">
-        <div className="relative">
-          <PlacePhoto place={place} className="h-40 w-full border-b-2 border-ink" />
-          <span className="absolute left-2 top-2 border-2 border-ink bg-paper px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide">
-            {meta.emoji} {meta.label}
+        {/* Full-bleed colored header (only this is new — the rest matches the
+            compact card exactly). Negative margins pull it to the card edges. */}
+        <div
+          className={`-mx-3 -mt-3 mb-2.5 flex items-start gap-2.5 border-b-2 border-ink px-3 py-2.5 ${
+            CATEGORY_BG[meta.color] ?? "bg-sky"
+          }`}
+        >
+          <span
+            className="grid h-9 w-9 shrink-0 place-items-center border-2 border-ink bg-paper text-lg"
+            aria-hidden
+          >
+            {meta.emoji}
           </span>
-          <span className="absolute right-2 top-2">
-            <OpenNowBadge place={place} />
-          </span>
-        </div>
-
-        <div className="p-3">
-          <h3 className="font-display text-2xl leading-none uppercase tracking-tight">
-            {place.name}
-          </h3>
-          <p className="mt-1 font-mono text-[11px] uppercase tracking-wide text-ink/60">
-            {place.neighborhood}
-            {place.cuisine ? ` · ${place.cuisine}` : ""}
-          </p>
-
-          <div className="mt-2 flex items-center justify-between">
-            <PenguinRating rating={place.penguinRating} />
-            <PriceTag level={place.priceLevel} />
+          <div className="min-w-0 flex-1">
+            <h3 className="font-display text-xl leading-[0.95] uppercase text-ink">
+              {place.name}
+            </h3>
+            <p className="mt-1 truncate font-mono text-[11px] uppercase tracking-wide text-ink/70">
+              {place.neighborhood}
+              {place.cuisine ? ` · ${place.cuisine}` : ""}
+            </p>
           </div>
-
-          {place.tags.length > 0 && (
-            <div className="mt-2 flex flex-wrap gap-1">
-              {place.tags.slice(0, 3).map((tag) => (
-                <span
-                  key={tag}
-                  className="border border-ink/40 px-1.5 py-0.5 font-mono text-[10px] lowercase text-ink/70"
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-          )}
         </div>
+
+        <div className="flex flex-wrap items-center gap-2">
+          <OpenNowBadge place={place} />
+          <PriceTag level={place.priceLevel} />
+        </div>
+
+        {place.tags.length > 0 && (
+          <div className="mt-2 flex flex-wrap gap-1">
+            {place.tags.slice(0, 3).map((tag) => (
+              <span
+                key={tag}
+                className="border border-ink/40 px-1.5 py-0.5 font-mono text-[10px] lowercase text-ink/70"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
       </Link>
 
-      <div className="flex flex-wrap items-center gap-2 border-t-2 border-dashed border-ink/40 p-3 pt-2">
+      <div className="mt-2.5 flex flex-wrap items-center gap-2 border-t-2 border-dashed border-ink/30 pt-2.5">
         <AddToDayButton placeId={place.id} />
         <BeenThereStamp placeId={place.id} />
       </div>

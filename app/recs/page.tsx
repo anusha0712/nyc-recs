@@ -15,10 +15,26 @@ export default function RecsPage() {
         <h2 className="font-display text-4xl uppercase leading-none sm:text-5xl">
           The <span className="text-hotred">Recs</span> Desk
         </h2>
-        <p className="mt-1 font-serif italic text-ink/70">
-          Everywhere I’d send you, all in one place. Tap a headline to read more.
-        </p>
-        <div className="mt-4">
+
+        <section className="relative mt-4 paper bg-hotred/10 p-4 pt-5">
+          <span
+            className="stamp absolute -left-2 -top-3 z-10 -rotate-3 bg-paper px-2 py-0.5 text-xs opacity-100 mix-blend-normal"
+            aria-hidden
+          >
+            Caveats
+          </span>
+          <p className="font-serif text-[14px] leading-relaxed">
+            I have no Thai recs since I do not enjoy that. I also, unfortunately,
+            cannot provide queer space recommendations with great confidence. I will
+            leave both to our more in-the-know friends. In a pinch, outdoor/day
+            drinking is best accomplished by walking around West Village, Marks Pl or
+            LES (college-y). PLEASE do not go to Adda for Indian food, everything
+            tastes the same and it&rsquo;s not worth it - the Queens location was
+            better but it closed down.
+          </p>
+        </section>
+
+        <div className="mt-5">
           <RecsBrowser />
         </div>
       </div>

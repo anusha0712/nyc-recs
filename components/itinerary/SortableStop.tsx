@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { CATEGORY_META, type Place } from "@/data/places";
-import PenguinRating from "@/components/PenguinRating";
 import OpenNowBadge from "@/components/OpenNowBadge";
 
 // One draggable stop within a day. The whole card is the drag handle (nice on
@@ -62,7 +61,7 @@ export default function SortableStop({
           </p>
         </Link>
         <div className="mt-1 flex items-center gap-2">
-          <PenguinRating rating={place.penguinRating} />
+          {place.isFav && <span className="text-xs font-bold text-hotpink">★ Fav</span>}
           <OpenNowBadge place={place} />
         </div>
       </div>
