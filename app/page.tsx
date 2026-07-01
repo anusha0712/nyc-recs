@@ -54,7 +54,8 @@ export default function CoverPage() {
               <div className="halftone pointer-events-none absolute inset-0 opacity-[0.08]" aria-hidden />
             </div>
             <figcaption className="mt-2 text-center font-serif text-xs italic text-ink/70">
-              Our fearless correspondents, filing live from the greatest city on earth.
+              “Shall I compare thee to a summer’s day? No, a summer’s day is not a
+              bitch!” — Nick Miller, circa season 1
             </figcaption>
           </div>
         </figure>
