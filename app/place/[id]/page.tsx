@@ -3,12 +3,20 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PLACES, CATEGORY_META, getPlace } from "@/data/places";
 import Masthead from "@/components/Masthead";
-import PlacePhoto from "@/components/PlacePhoto";
 import PriceTag from "@/components/PriceTag";
 import OpenNowBadge from "@/components/OpenNowBadge";
 import HoursTable from "@/components/HoursTable";
 import AddToDayButton from "@/components/AddToDayButton";
 import BeenThereStamp from "@/components/BeenThereStamp";
+
+const CATEGORY_BG: Record<string, string> = {
+  hotred: "bg-hotred",
+  hotpink: "bg-hotpink",
+  grape: "bg-grape",
+  sky: "bg-sky",
+  park: "bg-park",
+  taxi: "bg-taxi",
+};
 
 export function generateStaticParams() {
   return PLACES.map((p) => ({ id: p.id }));
@@ -38,6 +46,15 @@ export default async function PlacePage({
   if (!place) notFound();
 
   const meta = CATEGORY_META[place.category];
+  // Direct booking link when we have one; otherwise a search fallback for any
+  // reservation-recommended spot so a "Book a table" option always appears.
+  const reservationHref =
+    place.reservationUrl ??
+    (place.reservationNeeded
+      ? `https://www.google.com/search?q=${encodeURIComponent(
+          place.name + " reservations New York",
+        )}`
+      : undefined);
 
   return (
     <main className="flex-1">
@@ -52,8 +69,12 @@ export default async function PlacePage({
         </Link>
 
         {/* Headline block */}
-        <div className="mt-2 flex items-center gap-2">
-          <span className="border-2 border-ink bg-paper px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide">
+        <div className="mt-2 flex flex-wrap items-center gap-2">
+          <span
+            className={`border-2 border-ink px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide text-ink ${
+              CATEGORY_BG[meta.color] ?? "bg-sky"
+            }`}
+          >
             {meta.emoji} {meta.label}
           </span>
           <OpenNowBadge place={place} />
@@ -63,10 +84,10 @@ export default async function PlacePage({
             </span>
           )}
         </div>
-        <h1 className="mt-2 font-display text-5xl uppercase leading-[0.9] tracking-tight sm:text-6xl">
+        <h1 className="mt-3 font-display text-5xl uppercase leading-[0.9] tracking-tight sm:text-6xl">
           {place.name}
         </h1>
-        <p className="mt-1 font-mono text-xs uppercase tracking-widest text-ink/60">
+        <p className="mt-2 font-mono text-xs uppercase tracking-widest text-ink/60">
           {place.neighborhood}
           {place.cuisine ? ` · ${place.cuisine}` : ""}
         </p>
@@ -74,17 +95,11 @@ export default async function PlacePage({
           <PriceTag level={place.priceLevel} />
         </div>
 
-        {/* Photo */}
-        <figure className="relative mt-4 -rotate-1">
-          <span className="tape absolute -left-2 -top-3 z-10 h-5 w-20 rotate-6" aria-hidden />
-          <div className="paper p-2">
-            <PlacePhoto
-              place={place}
-              className="h-56 w-full border-2 border-ink sm:h-72"
-              sizes="(max-width: 640px) 100vw, 600px"
-            />
-          </div>
-        </figure>
+        {/* Actions — at the top, not sticky */}
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <AddToDayButton placeId={place.id} size="lg" />
+          <BeenThereStamp placeId={place.id} size="lg" />
+        </div>
 
         {/* Editor's Note — hidden when there's no note */}
         {place.authorNote.trim() && (
@@ -126,18 +141,12 @@ export default async function PlacePage({
 
         {/* Links */}
         <section className="mt-6 grid gap-2">
-          {place.reservationUrl && (
-            <LinkRow href={place.reservationUrl} label="Book a table" emoji="🍽️" />
+          {reservationHref && (
+            <LinkRow href={reservationHref} label="Book a table" emoji="🍽️" />
           )}
           {place.website && <LinkRow href={place.website} label="Website" emoji="🔗" />}
           <LinkRow href={place.googleMapsUrl} label="Open in Google Maps" emoji="📍" />
         </section>
-
-        {/* Actions */}
-        <div className="sticky bottom-24 mt-6 flex flex-wrap items-center gap-2 border-2 border-ink bg-paper/95 p-3 shadow-[4px_4px_0_0_#141210] backdrop-blur">
-          <AddToDayButton placeId={place.id} size="lg" />
-          <BeenThereStamp placeId={place.id} size="lg" />
-        </div>
       </article>
     </main>
   );

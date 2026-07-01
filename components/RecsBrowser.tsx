@@ -112,11 +112,20 @@ export default function RecsBrowser() {
             ))}
           </Select>
         )}
-        <Select value={sort} onChange={(v) => setSort(v as SortKey)} label="Sort">
-          <option value="fav">Top picks</option>
-          <option value="az">A–Z</option>
-          <option value="price">$ Low→High</option>
-        </Select>
+        <label className="inline-flex min-h-[36px] items-center gap-1.5 border-2 border-ink bg-paper px-2">
+          <span className="font-mono text-[10px] font-bold uppercase tracking-wide text-ink/50">
+            Sort
+          </span>
+          <select
+            value={sort}
+            onChange={(e) => setSort(e.target.value as SortKey)}
+            className="bg-transparent py-1 font-mono text-xs font-bold uppercase outline-none"
+          >
+            <option value="fav">Top picks</option>
+            <option value="az">A–Z</option>
+            <option value="price">$ Low→High</option>
+          </select>
+        </label>
         <button
           type="button"
           onClick={() => setOpenOnly((v) => !v)}
