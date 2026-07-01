@@ -93,12 +93,26 @@ export default async function PlacePage({
           <PriceTag level={place.priceLevel} />
         </div>
 
-        {/* Reservation status */}
-        <div className="mt-3">
-          <Fact
-            label="Reservation"
-            value={place.reservationNeeded ? "Recommended" : "Walk-in ok"}
-          />
+        {/* Reservation + booking, side by side (like the old facts row) */}
+        <div className="mt-3 grid grid-cols-2 gap-2">
+          <div className="border-2 border-ink bg-paper px-3 py-2">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-ink/50">
+              Reservation
+            </p>
+            <p className="font-display text-xl uppercase leading-none">
+              {place.reservationNeeded ? "Recommended" : "Walk-in ok"}
+            </p>
+          </div>
+          <a
+            href={reservationHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center border-2 border-ink bg-park px-3 py-2 text-center text-paper transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
+          >
+            <span className="font-display text-lg uppercase leading-none">
+              🍽️ Book a table ↗
+            </span>
+          </a>
         </div>
 
         {/* Actions — at the top, not sticky */}
@@ -147,23 +161,11 @@ export default async function PlacePage({
 
         {/* Links */}
         <section className="mt-6 grid gap-2">
-          {reservationHref && (
-            <LinkRow href={reservationHref} label="Book a table" emoji="🍽️" />
-          )}
           {place.website && <LinkRow href={place.website} label="Website" emoji="🔗" />}
           <LinkRow href={place.googleMapsUrl} label="Open in Google Maps" emoji="📍" />
         </section>
       </article>
     </main>
-  );
-}
-
-function Fact({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="inline-block border-2 border-ink bg-paper px-3 py-2">
-      <p className="font-mono text-[10px] uppercase tracking-widest text-ink/50">{label}</p>
-      <p className="font-display text-xl uppercase leading-none">{value}</p>
-    </div>
   );
 }
 
