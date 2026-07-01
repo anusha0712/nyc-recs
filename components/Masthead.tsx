@@ -17,7 +17,7 @@ export default function Masthead({
           <span>Vol. 1 · Summer Ed.</span>
           <span>{dateline ?? "The Anusha-Approved Press"}</span>
         </div>
-        <Link href="/" className="block text-center">
+        <Link href="/" className="mt-4 block text-center">
           <h1
             className={`font-display uppercase leading-[0.85] tracking-tight ${
               compact ? "text-3xl" : "text-5xl sm:text-6xl"
