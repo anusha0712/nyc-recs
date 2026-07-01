@@ -1,26 +1,134 @@
 @import "tailwindcss";
 
+@theme {
+  /* NYC-summer newsstand palette */
+  --color-cream: #f7f1e1;
+  --color-paper: #fffaf0;
+  --color-ink: #141210;
+  --color-taxi: #ffcf24;
+  --color-hotred: #ff3b2f;
+  --color-hotpink: #ff4d9d;
+  --color-park: #1fa562;
+  --color-sky: #2ea6e6;
+  --color-grape: #6b4bd6;
+  --color-newsprint: #d9cfb8;
+
+  /* Fonts (wired to next/font CSS vars in layout.tsx) */
+  --font-display: var(--font-anton), "Impact", sans-serif;
+  --font-serif: var(--font-fraunces), "Georgia", serif;
+  --font-mono: var(--font-dm-mono), "Courier New", monospace;
+
+  /* Playful motion */
+  --animate-waddle: waddle 1.6s ease-in-out infinite;
+  --animate-jiggle: jiggle 0.4s ease-in-out;
+}
+
+@keyframes waddle {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+@keyframes jiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-3deg) scale(1.05); }
+  75% { transform: rotate(3deg) scale(1.05); }
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  /* Faint newsprint speckle so cream never reads as flat white */
+  background-image:
+    radial-gradient(var(--color-newsprint) 0.5px, transparent 0.5px),
+    radial-gradient(var(--color-newsprint) 0.5px, var(--color-cream) 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+}
+
+/* ---------- Editorial texture utilities ----------
+   Declared in @layer components so Tailwind's utilities layer (which sits
+   ABOVE components) can override them — e.g. `paper bg-park` paints green,
+   not the default paper cream. */
+@layer components {
+  /* Paper card: warm sheet with a hard ink edge + printed drop */
+  .paper {
+    background-color: var(--color-paper);
+    border: 2px solid var(--color-ink);
+    box-shadow: 4px 4px 0 0 var(--color-ink);
+  }
+
+  /* Halftone dot field — layer behind headlines / photos */
+  .halftone {
+    background-image: radial-gradient(var(--color-ink) 1.1px, transparent 1.2px);
+    background-size: 6px 6px;
+  }
+
+  /* Scotch-tape strip — put on a small absolutely-positioned span */
+  .tape {
+    background: color-mix(in srgb, var(--color-taxi) 55%, transparent);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+    backdrop-filter: saturate(1.2);
+  }
+
+  /* Rubber-stamp look — outlined, tilted, ink-red by default */
+  .stamp {
+    color: var(--color-hotred);
+    border: 3px solid currentColor;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: var(--font-display);
+    opacity: 0.9;
+    mix-blend-mode: multiply;
+  }
+
+  /* Torn / deckled bottom edge for section breaks */
+  .torn {
+    clip-path: polygon(
+      0 0, 100% 0, 100% 92%,
+      96% 100%, 92% 93%, 88% 100%, 84% 93%, 80% 100%, 76% 93%, 72% 100%,
+      68% 93%, 64% 100%, 60% 93%, 56% 100%, 52% 93%, 48% 100%, 44% 93%,
+      40% 100%, 36% 93%, 32% 100%, 28% 93%, 24% 100%, 20% 93%, 16% 100%,
+      12% 93%, 8% 100%, 4% 93%, 0 100%
+    );
+  }
+
+  /* Dashed "cut here" divider */
+  .cut-line {
+    border: none;
+    border-top: 2px dashed var(--color-ink);
+    opacity: 0.4;
+  }
+
+  /* Chunky highlighter underline flourish */
+  .marker-underline {
+    background-image: linear-gradient(var(--color-taxi), var(--color-taxi));
+    background-repeat: no-repeat;
+    background-position: 0 88%;
+    background-size: 100% 0.4em;
+  }
+}
+
+/* Leaflet tweaks */
+.leaflet-container {
+  font-family: var(--font-mono);
+  background: var(--color-cream);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

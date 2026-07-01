@@ -1,0 +1,24 @@
+{
+  "name": "The Daily Waddle — Your NYC Summer",
+  "short_name": "Daily Waddle",
+  "description": "A hand-picked, penguin-approved guide to NYC with a 4-day itinerary builder.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f1e1",
+  "theme_color": "#ffcf24",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
