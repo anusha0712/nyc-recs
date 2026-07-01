@@ -46,15 +46,13 @@ export default async function PlacePage({
   if (!place) notFound();
 
   const meta = CATEGORY_META[place.category];
-  // Direct booking link when we have one; otherwise a search fallback for any
-  // reservation-recommended spot so a "Book a table" option always appears.
+  // A "Book a table" link for EVERY place: the direct booking URL when we have
+  // one, otherwise a reservations search fallback.
   const reservationHref =
     place.reservationUrl ??
-    (place.reservationNeeded
-      ? `https://www.google.com/search?q=${encodeURIComponent(
-          place.name + " reservations New York",
-        )}`
-      : undefined);
+    `https://www.google.com/search?q=${encodeURIComponent(
+      place.name + " reservations New York",
+    )}`;
 
   return (
     <main className="flex-1">
@@ -93,6 +91,14 @@ export default async function PlacePage({
         </p>
         <div className="mt-2">
           <PriceTag level={place.priceLevel} />
+        </div>
+
+        {/* Reservation status */}
+        <div className="mt-3">
+          <Fact
+            label="Reservation"
+            value={place.reservationNeeded ? "Recommended" : "Walk-in ok"}
+          />
         </div>
 
         {/* Actions — at the top, not sticky */}
@@ -149,6 +155,15 @@ export default async function PlacePage({
         </section>
       </article>
     </main>
+  );
+}
+
+function Fact({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="inline-block border-2 border-ink bg-paper px-3 py-2">
+      <p className="font-mono text-[10px] uppercase tracking-widest text-ink/50">{label}</p>
+      <p className="font-display text-xl uppercase leading-none">{value}</p>
+    </div>
   );
 }
 
