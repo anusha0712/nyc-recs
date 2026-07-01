@@ -3,7 +3,7 @@ import Masthead from "@/components/Masthead";
 import ItineraryBuilder from "@/components/itinerary/ItineraryBuilder";
 
 export const metadata: Metadata = {
-  title: "Build Your Trip — The Daily Waddle 🐧",
+  title: "Build Your Trip — The Daily Bite 🐧",
   description: "Drag your favorite NYC spots into a 4-day plan, then share it or add it to your calendar.",
 };
 

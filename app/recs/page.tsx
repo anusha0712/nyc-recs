@@ -3,7 +3,7 @@ import Masthead from "@/components/Masthead";
 import RecsBrowser from "@/components/RecsBrowser";
 
 export const metadata: Metadata = {
-  title: "The Recs — The Daily Waddle 🐧",
+  title: "The Recs — The Daily Bite 🐧",
   description: "Every hand-picked NYC spot: filter by vibe, cuisine, neighborhood and more.",
 };
 

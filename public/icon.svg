@@ -16,5 +16,5 @@
     <rect x="66" y="88" width="30" height="20" rx="6" fill="#2ea6e6" stroke="#141210" stroke-width="4"/>
     <rect x="100" y="88" width="30" height="20" rx="6" fill="#2ea6e6" stroke="#141210" stroke-width="4"/>
   </g>
-  <text x="256" y="452" text-anchor="middle" font-family="Impact, sans-serif" font-size="46" fill="#141210" letter-spacing="2">WADDLE</text>
+  <text x="256" y="452" text-anchor="middle" font-family="Impact, sans-serif" font-size="52" fill="#141210" letter-spacing="3">BITE</text>
 </svg>

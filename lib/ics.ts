@@ -81,10 +81,10 @@ export function buildIcs(itinerary: Itinerary, startDate: Date): string {
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//The Daily Waddle//NYC Trip//EN",
+    "PRODID:-//The Daily Bite//NYC Trip//EN",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
-    "X-WR-CALNAME:The Daily Waddle 🐧 NYC Trip",
+    "X-WR-CALNAME:The Daily Bite 🐧 NYC Trip",
   ];
   for (const e of events) {
     lines.push(

@@ -22,9 +22,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const place = getPlace(id);
-  if (!place) return { title: "Not found — The Daily Waddle" };
+  if (!place) return { title: "Not found — The Daily Bite" };
   return {
-    title: `${place.name} — The Daily Waddle 🐧`,
+    title: `${place.name} — The Daily Bite 🐧`,
     description: place.authorNote.slice(0, 150),
   };
 }

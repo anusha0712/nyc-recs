@@ -3,7 +3,7 @@ import Masthead from "@/components/Masthead";
 import MapView from "@/components/map/MapView";
 
 export const metadata: Metadata = {
-  title: "The Map — The Daily Waddle 🐧",
+  title: "The Map — The Daily Bite 🐧",
   description: "Every hand-picked NYC spot, pinned on the map.",
 };
 

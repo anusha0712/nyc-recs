@@ -16,7 +16,7 @@ export default function ShareExport({ itinerary }: { itinerary: Itinerary }) {
       if (navigator.share) {
         await navigator.share({
           title: "Our NYC trip 🐧",
-          text: "Here's the plan I built on The Daily Waddle!",
+          text: "Here's the plan I built on The Daily Bite!",
           url,
         });
         return;

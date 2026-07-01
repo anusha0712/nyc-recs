@@ -15,7 +15,7 @@ export default function Masthead({
       <div className="mx-auto max-w-2xl px-4">
         <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-ink/60">
           <span>Vol. 1 · Summer Ed.</span>
-          <span>{dateline ?? "The Penguin-Approved Press"}</span>
+          <span>{dateline ?? "The Anusha-Approved Press"}</span>
         </div>
         <Link href="/" className="block text-center">
           <h1
@@ -23,12 +23,12 @@ export default function Masthead({
               compact ? "text-3xl" : "text-5xl sm:text-6xl"
             }`}
           >
-            The Daily Waddle
+            The Daily Bite
           </h1>
         </Link>
         {!compact && (
           <p className="mt-1 text-center font-serif text-sm italic text-ink/70">
-            “All the New York that’s fit to eat” 🐧
+            happy late nights in the middle of july
           </p>
         )}
       </div>

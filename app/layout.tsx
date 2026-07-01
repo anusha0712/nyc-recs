@@ -24,7 +24,7 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Daily Waddle 🐧 — Your NYC Summer",
+  title: "The Daily Bite 🐧 — Samira & Ava's NYC Summer",
   description:
     "A hand-picked, penguin-approved guide to New York City — recs, hours, notes, and a 4-day itinerary builder made just for you.",
   manifest: "/manifest.json",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "The Daily Waddle",
+    title: "The Daily Bite",
   },
 };
 
