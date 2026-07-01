@@ -63,8 +63,13 @@ export default function CoverPage() {
           >
             From the Editor
           </span>
-          <div className="flex items-start gap-3">
-            <Penguin className="h-16 w-14 shrink-0" accessory="sunglasses" title="Your editor-in-chief" />
+          <div>
+            {/* Floated so the note wraps around the penguin (right + below). */}
+            <Penguin
+              className="float-left mr-3 mb-1 h-16 w-14"
+              accessory="sunglasses"
+              title="Your editor-in-chief"
+            />
             <p className="font-serif text-[15px] leading-relaxed">
               Welcome to New York!! 🗽🐧 Here are my favorite recs with helpful
               notes wherever I deemed it necessary! In my attempt to not be an
