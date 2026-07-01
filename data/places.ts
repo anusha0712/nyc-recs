@@ -9,6 +9,8 @@
 // via each place's Google Maps link before you go.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import curationData from "./curation.json";
+
 export type Category =
   | "food"
   | "sweets"
@@ -101,7 +103,7 @@ function everyday(
   );
 }
 
-export const PLACES: Place[] = [
+const RAW_PLACES: Place[] = [
   // ── FOOD ───────────────────────────────────────────────────────────────────
   {
     id: "rowdy-rooster",
@@ -1220,6 +1222,20 @@ export const PLACES: Place[] = [
       "The honeycomb and vegan cookie-dough scoops are the move at this East Village walk-up window.",
   },
 ];
+
+// ── Curation overrides (edited via the dev-only /studio page) ────────────────
+// data/curation.json maps a place id → the fields Anusha has curated. These are
+// merged on top of the base data above, so they win in the real site.
+export type Curation = Partial<
+  Pick<Place, "category" | "tags" | "authorNote" | "isFav">
+>;
+
+const CURATION = curationData as unknown as Record<string, Curation>;
+
+export const PLACES: Place[] = RAW_PLACES.map((p) => {
+  const override = CURATION[p.id];
+  return override ? { ...p, ...override } : p;
+});
 
 // ── Derived filter lists ─────────────────────────────────────────────────────
 export const CATEGORIES = Array.from(
