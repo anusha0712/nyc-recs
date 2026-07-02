@@ -135,7 +135,7 @@ export default async function PlacePage({
             >
               Editor’s Note
             </span>
-            <p className="font-serif text-[16px] leading-relaxed">{place.authorNote}</p>
+            <p className="font-serif text-[16px] leading-relaxed whitespace-pre-line">{place.authorNote}</p>
           </section>
         )}
 
