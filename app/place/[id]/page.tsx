@@ -120,10 +120,11 @@ export default async function PlacePage({
           </div>
         )}
 
-        {/* Actions — at the top, not sticky */}
-        <div className="mt-4 flex flex-wrap items-center gap-2">
-          <AddToDayButton placeId={place.id} size="lg" />
-          <BeenThereStamp placeId={place.id} size="lg" />
+        {/* Actions — at the top, not sticky. Grid mirrors the reservation
+            row above so all four buttons line up on the same two columns. */}
+        <div className="mt-2 grid grid-cols-2 gap-2">
+          <AddToDayButton placeId={place.id} size="lg" fullWidth />
+          <BeenThereStamp placeId={place.id} size="lg" fullWidth />
         </div>
 
         {/* Editor's Note — hidden when there's no note */}

@@ -11,9 +11,11 @@ const prefersReducedMotion = () =>
 export default function BeenThereStamp({
   placeId,
   size = "sm",
+  fullWidth = false,
 }: {
   placeId: string;
   size?: "sm" | "lg";
+  fullWidth?: boolean;
 }) {
   const { has, toggle, hydrated } = useBeenThere();
   const ref = useRef<HTMLButtonElement>(null);
@@ -45,7 +47,9 @@ export default function BeenThereStamp({
   if (!hydrated) {
     return (
       <span
-        className={`inline-flex items-center justify-center border-2 border-ink bg-newsprint/40 font-mono uppercase tracking-wide ${base}`}
+        className={`inline-flex items-center justify-center border-2 border-ink bg-newsprint/40 font-mono uppercase tracking-wide ${base} ${
+          fullWidth ? "w-full" : ""
+        }`}
       >
         · · ·
       </span>
@@ -58,7 +62,9 @@ export default function BeenThereStamp({
       type="button"
       onClick={onClick}
       aria-pressed={stamped}
-      className={`inline-flex items-center gap-1.5 border-2 border-ink font-mono font-bold uppercase tracking-wide transition-transform active:scale-90 ${base} ${
+      className={`inline-flex items-center justify-center gap-1.5 border-2 border-ink font-mono font-bold uppercase tracking-wide transition-transform active:scale-90 ${base} ${
+        fullWidth ? "w-full" : ""
+      } ${
         stamped ? "bg-hotpink text-paper -rotate-2" : "bg-paper text-ink hover:bg-cream"
       }`}
     >

@@ -7,9 +7,11 @@ import { useItinerary, NUM_DAYS } from "@/lib/storage";
 export default function AddToDayButton({
   placeId,
   size = "sm",
+  fullWidth = false,
 }: {
   placeId: string;
   size?: "sm" | "lg";
+  fullWidth?: boolean;
 }) {
   const { addToDay, removeFromDay, dayForPlace, hydrated } = useItinerary();
   const [open, setOpen] = useState(false);
@@ -23,7 +25,9 @@ export default function AddToDayButton({
   if (!hydrated) {
     return (
       <span
-        className={`inline-flex items-center justify-center border-2 border-ink bg-newsprint/40 font-mono uppercase tracking-wide ${base}`}
+        className={`inline-flex items-center justify-center border-2 border-ink bg-newsprint/40 font-mono uppercase tracking-wide ${base} ${
+          fullWidth ? "w-full" : ""
+        }`}
       >
         · · ·
       </span>
@@ -33,12 +37,14 @@ export default function AddToDayButton({
   const inTrip = currentDay !== null;
 
   return (
-    <div className="relative">
+    <div className={`relative ${fullWidth ? "w-full" : ""}`}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className={`inline-flex items-center gap-1.5 border-2 border-ink font-mono font-bold uppercase tracking-wide transition-transform active:scale-95 ${base} ${
+        className={`inline-flex items-center justify-center gap-1.5 border-2 border-ink font-mono font-bold uppercase tracking-wide transition-transform active:scale-95 ${base} ${
+          fullWidth ? "w-full" : ""
+        } ${
           inTrip ? "bg-park text-paper" : "bg-taxi text-ink"
         }`}
       >
