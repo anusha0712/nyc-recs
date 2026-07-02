@@ -1,1 +1,578 @@
-{}
+{
+  "rowdy-rooster": {
+    "category": "food",
+    "tags": [
+      "fast-food",
+      "north-indian",
+      "grab-and-go"
+    ],
+    "authorNote": "Absolutely must get the Indian fried chicken sandwich + masala fries combo. My order: Big Rowdy Sandwich, thigh, medium-level-2 spice + fries (spicy)",
+    "isFav": true
+  },
+  "semma": {
+    "category": "food",
+    "tags": [
+      "michelin",
+      "south-indian"
+    ],
+    "authorNote": "The only Michelin-starred South Indian restaurant in the USA and the only starred Indian restaurant in NYC. Get a reservation for this. Including this on the reservation for #camaraderie with their vision. Gunpowder dosa is their most popular item - it is good! The tiger prawns are my favorite. ",
+    "isFav": false
+  },
+  "bhatti-indian-grill": {
+    "category": "food",
+    "tags": [
+      "north-indian",
+      "doordash-friendly"
+    ],
+    "authorNote": "A chill North Indian comfort food spot that you can totally order-in late night. I love their paneer and dal. My favorite is the stuffed tandoori mushroom - really a hidden banger and I haven't found an analogue in SF. ",
+    "isFav": false
+  },
+  "mala-project": {
+    "category": "food",
+    "tags": [
+      "giant-portions",
+      "asian"
+    ],
+    "authorNote": "MUST get the make-your-own dry pot. The toppings are endless and get any base but the soy-ginger base. I inhaled this way too frequently. Few of my favorite toppings: broccoli, bok choy, enoki mushrooms (FAV), any mushrooms, tofu skin, glass noodles, rice cakes and lotus root.",
+    "isFav": true
+  },
+  "au-zaatar": {
+    "category": "food",
+    "tags": [
+      "mediterranean",
+      "hidden-gem",
+      "multiple-locations"
+    ],
+    "authorNote": "Sometimes I feel like all Mediterranean places ultimately taste the same but THIS - yum. No one I've ever taken has disliked it. it is usually a group dinner vibe so we get the Mezzo and Dips Spinner (2-tier) but if you don't get that I have listed some of my favs. Drinks are yummy too!\n\n- Absolute MUST get is the tahini cauliflower called Arnabeet Bi Tarator. TRUST\n- Dips: Muhammara, Baba Ganoush, Labneh, Hummus\n- Potatoes: Sumac fries (pick this if only one), Batata Harra\n- Breads: Pita of course but also the Zaatar Manouche. Skip the halloumi dishes.\n\nI have never had a problem with reservation or walk-in. Try calling ahead?",
+    "isFav": true
+  },
+  "little-rubys": {
+    "category": "food",
+    "tags": [
+      "quick",
+      "cafe",
+      "bistro",
+      "multiple-locations",
+      "all-day"
+    ],
+    "authorNote": "My first ever meal in NYC! I will only vouch for the Murray Hill branch. It is simple and delicious and such a sprightly vibe. I love the vodka pasta, the pesto (it's really good but not classic pesto) and the pineapple mint juice. You can walk in!",
+    "isFav": true
+  },
+  "theodora": {
+    "category": "food",
+    "tags": [
+      "michelin",
+      "mediterranean"
+    ],
+    "authorNote": "Slightly bread heavy spot but they are yum. Must get the whipped ricotta but the seeded laffa changes seasonally and I liked that too. It is known for seafood and I LOVE the swordfish skewers -  please get the sauces are sooo good. Reservation recommended again.",
+    "isFav": true
+  },
+  "oxomoco": {
+    "category": "food",
+    "tags": [
+      "michelin",
+      "outdoor",
+      "mexican"
+    ],
+    "authorNote": "Mexican is meh in NYC as you know but including an upscale-mexioan spot. The guac and chips is famous and it is nice but nothing to write home about. The TACOS are so yum and I say that as someone who is doesn't find tacos satisfactory. It's the sauces man. I would skip the tempting mango chili lime starter. If they have any spicy chocolate dessert, get it.",
+    "isFav": false
+  },
+  "ci-siamo": {
+    "category": "food",
+    "tags": [
+      "date-night",
+      "hidden-gem"
+    ],
+    "authorNote": "Hidden gem but only in the sense that people I know don't talk about it enough. The ONION TART is so hype, I crave it every alternate day. The focaccia is banger - it's the tomato confit they serve it with. Smashed potatoes are really good! I usually reserve but two people walk-in should be fine. Call ahead for security. ",
+    "isFav": true
+  },
+  "la-esquina": {
+    "category": "drinks",
+    "tags": [
+      "dancing",
+      "speakeasy"
+    ],
+    "authorNote": "Underground, super-hype taco-tuesday every-day kind of vibe. Obviously crazy strong margherita pitchers are the vibe. Music is playing everywhere but there is a separate dance floor - I've heard everything from pop, reggaeton, afro and even Bollywood here. If it is a large group, make a reservation.  ",
+    "isFav": true
+  },
+  "softside": {
+    "category": "sweets",
+    "tags": [
+      "grab-and-go",
+      "dessert"
+    ],
+    "authorNote": "Vanilla soft serve with olive oil, honey, and flaky sea salt. Trust. It is simply unique - other places try to do olive oil + vanilla, I know, but this is somehow just better. ",
+    "isFav": false
+  },
+  "apollo-bagels": {
+    "category": "food",
+    "tags": [
+      "long-lines",
+      "iconic",
+      "grab-and-go",
+      "bagels",
+      "multiple-locations"
+    ],
+    "authorNote": "Viral bagel spot. People really like it. It's simply a bagel to me. I'm not a bagel aficionado but I enjoyed it. West Village location is the main one but there are long lines. Try to go early or super late and ideally on weekday. ",
+    "isFav": false
+  },
+  "lilia": {
+    "category": "food",
+    "tags": [
+      "italian",
+      "outdoor"
+    ],
+    "authorNote": "My absolute favorite Italian spot. I don't care about the apps at all but I am obsessed with the sheep's  milk agnolotti which is their signature. There is simply something about the sundried tomatoes in it, it is like crack. I found out later that the owner is a raging Zionist. Do with that what you will. Reservations recommended. ",
+    "isFav": true
+  },
+  "jeffreys-grocery": {
+    "category": "drinks",
+    "tags": [
+      "outdoor"
+    ],
+    "authorNote": "I cannot vouch for the food but great outdoor drinking spot for the vibes. Great stop for a leisurely West Village afternoon.",
+    "isFav": false
+  },
+  "lindustrie-pizzeria": {
+    "category": "food",
+    "tags": [
+      "grab-and-go",
+      "pizza"
+    ],
+    "authorNote": "The burrata slice is the famous one. There's basically always a sidewalk line but it moves fast. ",
+    "isFav": false
+  },
+  "emmetts-on-grove": {
+    "category": "food",
+    "tags": [
+      "pizza",
+      "multiple-locations"
+    ],
+    "authorNote": "I prefer the Macdougal location. It's a very cute spot with limited seating. I usually get the thin-crust. For the non-veg, Hot Girl is good. With NYC pizzas I always recommend adding jalapeños and hot honey. ",
+    "isFav": false
+  },
+  "lucali": {
+    "category": "food",
+    "tags": [
+      "cash-only",
+      "pizza"
+    ],
+    "authorNote": "This is my favorite pizza spot for no good reason but the hassle might not be worth it. Cash only, BYOB, no phone reservations. People make a plan out of the waiting where you put your name down when the line forms around 5pm, then drink at Brooklyn bars.",
+    "isFav": false
+  },
+  "verlaine": {
+    "category": "drinks",
+    "tags": [
+      "happy-hour"
+    ],
+    "authorNote": "Not outdoors but is definitely a must-hit. The cheap lychee martini happy hour is the stuff of legends and runs late (usually till 10pm). I have never had anything else here but that. Once we racked up 40 of these martinis. Great pregame spot. ",
+    "isFav": true
+  },
+  "double-chicken-please": {
+    "category": "drinks",
+    "tags": [
+      "worlds-best"
+    ],
+    "authorNote": "Personally, my fav upscale bar. Was part of the World's-50-Best bars list. The drinks all taste like dishes and they are so good. Key Lime Pie is the famous one but I've tried all the drinks in the Coop and I love the Thai Curry, Japanese Cold Noodle, Cold Pizza and French Toast. The tofu and hot honey chicken sandwiches are good and I like the shiitake mushroom poppers. \n\nThe front bar is walk-in and has different seasonal themes; the back room (The Coop) is reservation-only. ",
+    "isFav": true
+  },
+  "saaqi": {
+    "category": "drinks",
+    "tags": [],
+    "authorNote": "I appreciated the vibe of this Indian cocktail bar a lot. Each drink is inspired by some Indian handicraft or tradition. It is below Musaafer - another famous Indian spot. It is beautiful to look at, modeled after Sheesh Mahal in India.  ",
+    "isFav": false
+  },
+  "schmuck": {
+    "category": "drinks",
+    "tags": [
+      "outdoor"
+    ],
+    "authorNote": "Tiny, walk-in-only and there might be some dancing. Cocktails are themed and fun! Outdoor seating is available.",
+    "isFav": false
+  },
+  "dear-irving-on-hudson": {
+    "category": "drinks",
+    "tags": [
+      "rooftop",
+      "outdoor"
+    ],
+    "authorNote": "Rooftop with Hudson views. There is an indoor and outdoor area. I've only been at night and there was some dancing and definitely a DJ playing. Good vibes. ",
+    "isFav": false
+  },
+  "broken-shaker": {
+    "category": "drinks",
+    "tags": [
+      "rooftop",
+      "outdoor"
+    ],
+    "authorNote": "I think this is an underrated spot. It is cool, comfortable and very lush green rooftop. Very brick and plants vibe. There is an indoor and outdoor space and it's really nice for happy hour or sunset. I love the Pimms cup here. ",
+    "isFav": true
+  },
+  "westlight": {
+    "category": "drinks",
+    "tags": [
+      "rooftop",
+      "outdoor"
+    ],
+    "authorNote": "Considered one of the best rooftop views in the city. Reservation necessary. Some days they have events and stuff and music/Djs will be present. They have a wraparound view of the skyline and indoor/outdoor seating. Strong cocktails. Definitely a must-hit.",
+    "isFav": true
+  },
+  "le-dive": {
+    "category": "drinks",
+    "tags": [
+      "wine-bar",
+      "outdoor"
+    ],
+    "authorNote": "Dimes Square is a great outdoor drinking area - the summer vibes are immaculate. You can go anywhere here but Le Dive has good wine and good martinis. ",
+    "isFav": false
+  },
+  "parcelle": {
+    "category": "drinks",
+    "tags": [
+      "wine-bar",
+      "multiple-locations"
+    ],
+    "authorNote": "",
+    "isFav": false
+  },
+  "sauced": {
+    "category": "drinks",
+    "tags": [
+      "wine-bar",
+      "multiple-locations"
+    ],
+    "authorNote": "No menu — the server just asks your mood and what you like and then pours you something. The Williamsburg location has a killer backyard and the east village one is more like dim red light, chill vibes. ",
+    "isFav": true
+  },
+  "bar-pisellino": {
+    "category": "drinks",
+    "tags": [
+      "outdoor"
+    ],
+    "authorNote": "espresso + apéritif all day. Day drinking, outdoor seating good vibe",
+    "isFav": false
+  },
+  "solas": {
+    "category": "drinks",
+    "tags": [
+      "dancing"
+    ],
+    "authorNote": "Two-level East Village spot and I like the top 40s type of music - leaning like Raven Bar (no music video). Very college vibe idk if that icks you out. ",
+    "isFav": false
+  },
+  "bleecker-street-bar": {
+    "category": "drinks",
+    "tags": [
+      "sports-bar",
+      "world-cup"
+    ],
+    "authorNote": "It's a large, divey sports bar with pool table, darts and a subway station entrance inside lol (defunct now). They have tequila prickleback shots called Spicy Back which are to die for. Will screen World Cup.",
+    "isFav": true
+  },
+  "bobbys-night-out": {
+    "category": "drinks",
+    "tags": [
+      "dancing",
+      "sports-bar"
+    ],
+    "authorNote": "Sports bar by day, 90s hip-hop/R&B dance floor by night. I went here for Malvika's bday and the music had no misses but I don't want to hype it up too much. ",
+    "isFav": false
+  },
+  "cafe-leon-dore": {
+    "category": "coffee",
+    "tags": [
+      "coffee",
+      "grab-and-go"
+    ],
+    "authorNote": "I famously don't have NYC coffee recs but I loved this one when I went because it has that thick creamy top feeling. ",
+    "isFav": true
+  },
+  "caffe-paradiso": {
+    "category": "coffee",
+    "tags": [
+      "coffee",
+      "grab-and-go"
+    ],
+    "authorNote": "They went viral for their salted brown butter latte on tap. I again like them for the creamy thick coffee vibe. ",
+    "isFav": false
+  },
+  "dilli-dilli": {
+    "category": "food",
+    "tags": [
+      "north-indian"
+    ],
+    "authorNote": "Their theme is to contrast old and New Delhi food. There are no misses with the appetizer section so I suggest loading up on that. The Koyla chicken is really delicious. I recommend the Dilli Dilli Tikki, Chilli Cheese Toast (used Amul cheese and is delicious), Gilafi Paneer and the Gupta Burger. I'm sure the Shammi Kebab is good too but I didn't try.  Chill place, I've done both reservation and walk-in.",
+    "isFav": false
+  },
+  "dhamaka": {
+    "category": "food",
+    "tags": [
+      "michelin",
+      "north-indian"
+    ],
+    "authorNote": "The paneer and flaky parotta is legendary. It is not the usual paneer, it has a more herbaceous vibe. ",
+    "isFav": false
+  },
+  "kolkata-chai": {
+    "category": "coffee",
+    "tags": [
+      "chai",
+      "grab-and-go"
+    ],
+    "authorNote": "Hasan Minaj's chai startup vibe if you want to try.",
+    "isFav": false
+  },
+  "chai-spot": {
+    "category": "coffee",
+    "tags": [
+      "chai",
+      "cozy"
+    ],
+    "authorNote": "Kashmiri and masala chai rec. The place is also cozy and it is pretty famous. You can lounge on cushions and rugs and generally seems like a nice vibe. I have not tried the chai. ",
+    "isFav": false
+  },
+  "tonchin": {
+    "category": "food",
+    "tags": [
+      "ramen",
+      "michelin"
+    ],
+    "authorNote": "Tokyo tonkotsu ramen (pork broth) is my recommendation here. Definitely meets my finicky ramen standards. ",
+    "isFav": true
+  },
+  "nami-nori": {
+    "category": "food",
+    "tags": [
+      "michelin",
+      "sushi"
+    ],
+    "authorNote": "Cute vibe where you can build your own set of hand-rolls.",
+    "isFav": false
+  },
+  "win-son": {
+    "category": "food",
+    "tags": [
+      "bakery",
+      "brunch"
+    ],
+    "authorNote": "There is a bakery and a dining place. People go for brunch. The scallion pancakes are the most famous and the black sesame latter (although I know that is not your thing)",
+    "isFav": false
+  },
+  "moge-tee": {
+    "category": "sweets",
+    "tags": [
+      "grab-and-go",
+      "hidden-gem",
+      "tea"
+    ],
+    "authorNote": "An ACTUAL hidden gem. The only place that simulates Bombay iced tea for me. Get the Fresh lemon iced tea with no toppings and like 50-70% sugar. ",
+    "isFav": true
+  },
+  "thai-diner": {
+    "category": "food",
+    "tags": [
+      "brunch",
+      "michelin",
+      "thai"
+    ],
+    "authorNote": "",
+    "isFav": false
+  },
+  "viv-thai": {
+    "category": "food",
+    "tags": [
+      "thai"
+    ],
+    "authorNote": "It's a funky decor Thai place that I like, for once. The papaya salad is really yum. Chill and I think you can walk-in",
+    "isFav": false
+  },
+  "zaytinya": {
+    "category": "food",
+    "tags": [
+      "mediterranean"
+    ],
+    "authorNote": "José Andrés's Turkish/Greek/Lebanese mezze. A recommendation for the vibes. It is swanky with good food and drinks. Nubeluz, a hype rooftop bar, is in the same building. ",
+    "isFav": false
+  },
+  "kyma": {
+    "category": "drinks",
+    "tags": [
+      "dinner-party",
+      "greek",
+      "dancing"
+    ],
+    "authorNote": "Dinner party vibes where, as the night goes on, people dance around the tables, good music plays and  sparklers and stuff are bought around. It gets lit. ",
+    "isFav": false
+  },
+  "sartianos": {
+    "category": "food",
+    "tags": [
+      "hidden-gem",
+      "italian"
+    ],
+    "authorNote": "Another actual hidden gem and maybe comfort fav Italian spot. Get the reservation in the cafe not the downstairs restaurant. They are very chill and usually have open spots - you can definitely also walk in. The tomato ricotta toast and the white lasagna are sooo good (and I don't like lasagna usually). The arrabbiata is also a banger. ",
+    "isFav": true
+  },
+  "milano-market": {
+    "category": "food",
+    "tags": [
+      "grab-and-go",
+      "sandwiches"
+    ],
+    "authorNote": "I used to get this a lot in Columbia. This is like their cheese-plus. The variety is genuinely endless. ",
+    "isFav": true
+  },
+  "bubbys": {
+    "category": "food",
+    "tags": [
+      "brunch"
+    ],
+    "authorNote": "No reservations but really good brunch and vibes. Top brunch spot but DAILY.",
+    "isFav": true
+  },
+  "jacks-wife-freda": {
+    "category": "food",
+    "tags": [
+      "brunch",
+      "multiple-locations"
+    ],
+    "authorNote": "",
+    "isFav": false
+  },
+  "clinton-st-baking": {
+    "category": "food",
+    "tags": [
+      "brunch"
+    ],
+    "authorNote": "Pancakes are famous and served with warm maple butter and it really is good. Make a reservation but daily brunch means you can go on a weekday and there won't be a long line. ",
+    "isFav": false
+  },
+  "prince-street-pizza": {
+    "category": "food",
+    "tags": [
+      "grab-and-go",
+      "pizza"
+    ],
+    "authorNote": "Vodka pizza",
+    "isFav": false
+  },
+  "uluh": {
+    "category": "food",
+    "tags": [
+      "asian"
+    ],
+    "authorNote": "Good spicy Chinese food. The mapo-tofu, green beans, scallion pancakes and the Sichuan fried chicken are really good. Food comes piping hot which I'm sure you would appreciate. Very chill for getting a spot. ",
+    "isFav": false
+  },
+  "standard-biergarten": {
+    "category": "drinks",
+    "tags": [
+      "outdoor"
+    ],
+    "authorNote": "A great lively outdoor drinking spot close to the High Line. ",
+    "isFav": false
+  },
+  "dante": {
+    "category": "drinks",
+    "tags": [
+      "brunch",
+      "multiple-locations"
+    ],
+    "authorNote": "It's very cute and one of the world's best bars again. Martinis are yummy and some locations have the outdoor drinking vibe. There is brunch but usually I drink here. ",
+    "isFav": false
+  },
+  "bibliotheque": {
+    "category": "drinks",
+    "tags": [],
+    "authorNote": "A bookstore-cafe by day that turns into a wine bar by night - thought you would like the vibe. ",
+    "isFav": false
+  },
+  "superbueno": {
+    "category": "drinks",
+    "tags": [],
+    "authorNote": "Award winning bar with Mexican-inspired cocktails. Tough to get reservation but it gets very fun. There was music when I went but not sure if that is event specific. ",
+    "isFav": true
+  },
+  "acme": {
+    "category": "drinks",
+    "tags": [
+      "dancing"
+    ],
+    "authorNote": "Go early! ",
+    "isFav": false
+  },
+  "maison-close": {
+    "category": "drinks",
+    "tags": [
+      "dancing",
+      "dinner-party"
+    ],
+    "authorNote": "Dinner party vibe again around 11ish with burlesque dancers, a live singers and tabletop dancing",
+    "isFav": false
+  },
+  "birdee": {
+    "category": "sweets",
+    "tags": [
+      "bakery"
+    ],
+    "authorNote": "One of my favorite bakeries with savory pastries and sandwiches",
+    "isFav": true
+  },
+  "lafayette": {
+    "category": "sweets",
+    "tags": [
+      "brunch",
+      "bakery",
+      "long-lines"
+    ],
+    "authorNote": "Those viral swirly croissants in different shapes come from here",
+    "isFav": false
+  },
+  "la-cabra": {
+    "category": "sweets",
+    "tags": [
+      "grab-and-go",
+      "bakery"
+    ],
+    "authorNote": "cardamom bun is the most famous item",
+    "isFav": false
+  },
+  "radio-bakery": {
+    "category": "sweets",
+    "tags": [
+      "long-lines",
+      "grab-and-go",
+      "bakery"
+    ],
+    "authorNote": "",
+    "isFav": false
+  },
+  "librae": {
+    "category": "sweets",
+    "tags": [
+      "bakery",
+      "grab-and-go"
+    ],
+    "authorNote": "The date and tahini bun is the famous one but I have never had that.",
+    "isFav": false
+  },
+  "venchi": {
+    "category": "sweets",
+    "tags": [
+      "grab-and-go",
+      "dessert",
+      "gelato"
+    ],
+    "authorNote": "I loooove the gelato at this place - literally anything with hazelnut is worth getting.",
+    "isFav": true
+  },
+  "van-leeuwen": {
+    "category": "sweets",
+    "tags": [
+      "grab-and-go",
+      "dessert"
+    ],
+    "authorNote": "Another ice-cream rec. Salt-and-straw of NYC, if you will",
+    "isFav": false
+  }
+}

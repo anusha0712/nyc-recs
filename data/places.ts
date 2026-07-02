@@ -52,7 +52,7 @@ export const CATEGORY_META: Record<
   { label: string; emoji: string; color: string }
 > = {
   food: { label: "Eats", emoji: "🍽️", color: "hotred" },
-  sweets: { label: "Misc", emoji: "🍰", color: "taxi" },
+  sweets: { label: "Others", emoji: "🍰", color: "taxi" },
   coffee: { label: "Beverages", emoji: "☕️", color: "grape" },
   drinks: { label: "Drinks", emoji: "🍸", color: "hotpink" },
   sight: { label: "Sights", emoji: "🗽", color: "sky" },
@@ -138,6 +138,7 @@ const RAW_PLACES: Place[] = [
     reservationNeeded: true,
     website: "https://www.semma.nyc/",
     menuUrl: "https://www.semma.nyc/",
+    reservationUrl: "https://www.sevenrooms.com/explore/semma/reservations/create/search/",
     googleMapsUrl: gmaps("Semma West Village"),
     authorNote:
       "Michelin-starred Tamil Nadu cooking — the gunpowder dosa is unreal. This is one of the hardest tables in the city, so set an alarm for the reservation drop (~15 days out). Worth every bit of the scramble.",
@@ -157,6 +158,7 @@ const RAW_PLACES: Place[] = [
     reservationNeeded: false,
     website: "https://www.bhattinyc.com/",
     menuUrl: "https://www.bhattinyc.com/menu",
+    reservationUrl: "https://resy.com/cities/new-york-ny/venues/bhatti-indian-grill",
     googleMapsUrl: gmaps("Bhatti Indian Grill Murray Hill"),
     authorNote:
       "Curry Hill BYOB — bring a bottle! Smoky tandoor everything; the galouti kebab melts and the lamb chops are the move. Great affordable group dinner.",
@@ -176,6 +178,7 @@ const RAW_PLACES: Place[] = [
     reservationNeeded: false,
     website: "https://www.malaproject.com/",
     menuUrl: "https://www.malaproject.com/",
+    reservationUrl: "https://resy.com/cities/new-york-ny/venues/mala-project-east-village",
     googleMapsUrl: gmaps("Mala Project East Village"),
     authorNote:
       "You build your own dry pot from a checklist of meats + veg, then they wok-toss it in numbing-spicy málà sauce. So fun to share, and a dream for veggie-lovers. Pick medium spice unless you know what you're doing.",
@@ -195,6 +198,7 @@ const RAW_PLACES: Place[] = [
     reservationNeeded: true,
     website: "https://www.auzaatar.com/location/au-zaatar-east-village/",
     menuUrl: "https://www.auzaatar.com/order-online/",
+    reservationUrl: "https://www.auzaatar.com/east-village-reservations/",
     googleMapsUrl: gmaps("Au Zaatar East Village"),
     authorNote:
       "Get the tableside shawarma — they carve it right at your table and it's a whole moment. Lush, plant-draped room. Book ahead, especially for a group.",
@@ -213,6 +217,7 @@ const RAW_PLACES: Place[] = [
     suggestedTimeMins: 60,
     reservationNeeded: false,
     website: "https://www.rubyscafe.com/location/soho/",
+    reservationUrl: "https://www.opentable.com/r/little-rubys-cafe-soho-new-york",
     googleMapsUrl: gmaps("Little Ruby's Cafe Nolita"),
     authorNote:
       "Sunny all-day Aussie café — the Bronte burger and the big avo brunch plates are the classics. Walk-in, first-come on weekends, so go a little off-peak.",
@@ -232,6 +237,7 @@ const RAW_PLACES: Place[] = [
     reservationNeeded: true,
     website: "https://www.theodoranyc.com/",
     menuUrl: "https://www.theodoranyc.com/menu2",
+    reservationUrl: "https://resy.com/cities/new-york-ny/venues/theodora",
     googleMapsUrl: gmaps("Theodora Fort Greene Brooklyn"),
     authorNote:
       "Fire-and-smoke Levantine cooking in a cozy Fort Greene room — the dry-aged whole fish is the splurge, and the natural wine list is lovely. A proper date-night dinner.",
@@ -250,6 +256,7 @@ const RAW_PLACES: Place[] = [
     suggestedTimeMins: 105,
     reservationNeeded: true,
     website: "https://www.oxomoconyc.com/",
+    reservationUrl: "https://resy.com/cities/new-york-ny/venues/oxomoco",
     googleMapsUrl: gmaps("Oxomoco Greenpoint Brooklyn"),
     authorNote:
       "Michelin-starred wood-fired Mexican with house-milled heirloom-corn tortillas in a sunny, plant-filled space. Sit outside if you can and get a bunch of tacos to share. (Note: closes ~3–5pm between lunch & dinner — check the maps link.)",
@@ -269,6 +276,7 @@ const RAW_PLACES: Place[] = [
     reservationNeeded: true,
     website: "https://www.cisiamo.com/",
     menuUrl: "https://www.cisiamo.com/menus/",
+    reservationUrl: "https://www.opentable.com/r/ci-siamo-new-york",
     googleMapsUrl: gmaps("Ci Siamo Manhattan West"),
     authorNote:
       "THE ONION TART. Danny Meyer + Hillary Sterling's live-fire Italian, and that molten caramelized cipollini tart with goat-cheese fondue is the whole reason we're here. Order it. Then order it again.",
@@ -287,6 +295,7 @@ const RAW_PLACES: Place[] = [
     suggestedTimeMins: 105,
     reservationNeeded: true,
     website: "https://www.esquinanyc.com/location/la-esquina-nyc-downtown/",
+    reservationUrl: "https://resy.com/cities/new-york-ny/venues/la-esquina-soho",
     googleMapsUrl: gmaps("La Esquina Nolita"),
     authorNote:
       "The trick: walk through the little taqueria, past the kitchen, and down the hidden stairs into a candlelit brick-cellar brasserie. Margaritas, mariachi energy, runs late. Book the downstairs.",
@@ -343,6 +352,7 @@ const RAW_PLACES: Place[] = [
     reservationNeeded: true,
     website: "https://www.lilianewyork.com/",
     menuUrl: "https://www.lilianewyork.com/menu/dinner/",
+    reservationUrl: "https://resy.com/cities/new-york-ny/venues/lilia",
     googleMapsUrl: gmaps("Lilia Williamsburg Brooklyn"),
     authorNote:
       "Missy Robbins' handmade pastas are a religion — the mafaldini with pink peppercorn is THE dish. One of the toughest Resy scrambles in the city, so book the exact second the window opens. Dreamy special-occasion dinner.",
@@ -361,6 +371,7 @@ const RAW_PLACES: Place[] = [
     suggestedTimeMins: 90,
     reservationNeeded: true,
     website: "https://www.jeffreysgrocery.com/",
+    reservationUrl: "https://www.opentable.com/r/jeffreys-grocery-new-york",
     googleMapsUrl: gmaps("Jeffrey's Grocery West Village"),
     authorNote:
       "Sunny corner seafood spot — perch at the raw bar with a tower of oysters and a glass of white, then spill onto the sidewalk tables. Great for a leisurely West Village afternoon.",
@@ -401,6 +412,7 @@ const RAW_PLACES: Place[] = [
     reservationNeeded: true,
     website: "https://www.emmettsongrove.com/",
     menuUrl: "https://www.emmettsongrove.com/menus/",
+    reservationUrl: "https://www.sevenrooms.com/explore/emmettsongrove/reservations/create/search/",
     googleMapsUrl: gmaps("Emmett's on Grove West Village"),
     authorNote:
       "Chicago tavern-style thin-crust (and deep-dish) in a cozy Midwest supper-club room. Grab a Resy — it fills up, and it's a great late one. Closed Mondays.",
@@ -457,6 +469,7 @@ const RAW_PLACES: Place[] = [
     suggestedTimeMins: 90,
     reservationNeeded: true,
     website: "https://doublechickenplease.com/",
+    reservationUrl: "https://resy.com/cities/new-york-ny/venues/double-chicken-please",
     googleMapsUrl: gmaps("Double Chicken Please Lower East Side"),
     authorNote:
       "World's-50-Best famous. The front bar is walk-in; the back room (The Coop) is reservation-only and does those wild cocktails that taste like dishes — Key Lime Pie, Mango Sticky Rice. Book the back if you can. Closed Mondays.",
@@ -493,6 +506,7 @@ const RAW_PLACES: Place[] = [
     suggestedTimeMins: 75,
     reservationNeeded: false,
     website: "https://www.schmucknyc.com/",
+    reservationUrl: "https://resy.com/cities/new-york-ny/venues/schmuck-nyc",
     googleMapsUrl: gmaps("Schmuck bar Lower East Side"),
     authorNote:
       "Tiny, walk-in-only, house-party energy — great cocktails and a late-night crowd. Get there before it fills. Closed Sun/Mon.",
@@ -511,6 +525,7 @@ const RAW_PLACES: Place[] = [
     suggestedTimeMins: 90,
     reservationNeeded: true,
     website: "https://www.dearirving.com/dear-irving-on-hudson",
+    reservationUrl: "https://resy.com/cities/new-york-ny/venues/dear-irving-on-hudson",
     googleMapsUrl: gmaps("Dear Irving on Hudson Aliz Hotel"),
     authorNote:
       "Way up on the 40th/41st floors of the Aliz Hotel — polished cocktails with huge skyline + Hudson views. Book a table, go near sunset, thank me later. ✨",
@@ -529,6 +544,7 @@ const RAW_PLACES: Place[] = [
     suggestedTimeMins: 90,
     reservationNeeded: false,
     website: "https://www.brokenshaker.com/location/new-york-hours-and-location/",
+    reservationUrl: "https://resy.com/cities/new-york-ny/venues/broken-shaker-new-york",
     googleMapsUrl: gmaps("Broken Shaker Freehand Hotel New York"),
     authorNote:
       "Lush, plant-filled rooftop on the Freehand Hotel with award-winning, herby cocktails. Easygoing and great for a group. Go before it gets crowded.",
@@ -547,6 +563,7 @@ const RAW_PLACES: Place[] = [
     suggestedTimeMins: 90,
     reservationNeeded: false,
     website: "https://www.westlightnyc.com/",
+    reservationUrl: "https://www.sevenrooms.com/reservations/westlight/",
     googleMapsUrl: gmaps("Westlight William Vale Williamsburg"),
     authorNote:
       "22nd-floor wraparound terrace at The William Vale with a 360° Manhattan skyline view — arguably the best rooftop view in the city. Fancy little cocktails. Sunset here is a core memory.",
@@ -583,6 +600,7 @@ const RAW_PLACES: Place[] = [
     suggestedTimeMins: 75,
     reservationNeeded: false,
     website: "https://parcellewine.com/pages/wine-bars",
+    reservationUrl: "https://resy.com/cities/new-york-ny/venues/parcelle",
     googleMapsUrl: gmaps("Parcelle wine bar Chinatown Division Street"),
     authorNote:
       "Intimate Division Street wine bar from a beloved shop — pull a bottle off the shelf or settle in for snacks and low-intervention pours. Lovely and low-key. Closed Mondays.",
@@ -655,6 +673,7 @@ const RAW_PLACES: Place[] = [
     suggestedTimeMins: 90,
     reservationNeeded: false,
     website: "https://bleeckerstreetbarnyc.com/",
+    reservationUrl: "https://resy.com/cities/new-york-ny/venues/bleecker-street-bar",
     googleMapsUrl: gmaps("Bleecker Street Bar NoHo"),
     authorNote:
       "No-frills old-school dive with pool tables, cheap pitchers, and the game on every TV. Exactly what you want when you want a sports bar and nothing fancy.",
@@ -673,6 +692,7 @@ const RAW_PLACES: Place[] = [
     suggestedTimeMins: 120,
     reservationNeeded: false,
     website: "https://www.bobbysnightout.com/",
+    reservationUrl: "https://www.bobbysnightout.com/reservations",
     googleMapsUrl: gmaps("Bobby's Night Out Alphabet City East Village"),
     authorNote:
       "Heads up: I couldn't confirm a spot called 'Bobby G's' — this is my best guess (Bobby's Night Out in Alphabet City): sports by day, 90s hip-hop/R&B dance floor by night. Tell me if you meant somewhere else and I'll swap it!",
@@ -872,6 +892,7 @@ const RAW_PLACES: Place[] = [
     coords: { lat: 40.7605, lng: -73.9903 },
     hours: everyday("12:00-22:00", { fri: "12:00-23:00", sat: "12:00-23:00" }),
     website: "https://www.vivthainyc.com/",
+    reservationUrl: "https://www.opentable.com/r/viv-thai-new-york",
     googleMapsUrl: gmaps("Viv Thai Hell's Kitchen 9th Ave"),
     authorNote:
       "Snug Hell's Kitchen street-food Thai — the drunken noodles and curries pack real heat.",
@@ -887,7 +908,7 @@ const RAW_PLACES: Place[] = [
     coords: { lat: 40.7452, lng: -73.9887 },
     hours: everyday("06:30-22:30", { thu: "06:30-23:00", fri: "06:30-23:00", sat: "07:00-23:00", sun: "07:00-22:30" }),
     reservationNeeded: true,
-    reservationUrl: "https://www.sevenrooms.com/reservations/zaytinyaritznomad/website",
+    reservationUrl: "https://www.zaytinya.com/location/new-york/",
     website: "https://www.zaytinya.com/location/new-york/",
     googleMapsUrl: gmaps("Zaytinya NoMad"),
     authorNote:
@@ -1016,6 +1037,7 @@ const RAW_PLACES: Place[] = [
     coords: { lat: 40.7285, lng: -73.9868 },
     hours: everyday("11:30-22:15", { fri: "11:30-22:45", sat: "11:30-22:45" }),
     website: "https://www.uluhny.com/",
+    reservationUrl: "https://www.yelp.com/reservations/uluh-new-york",
     googleMapsUrl: gmaps("Uluh 2nd Ave East Village"),
     authorNote:
       "Buzzy East Village Chinese tea-house doing creative regional plates — no reservations, so join the waitlist line online.",
@@ -1063,6 +1085,7 @@ const RAW_PLACES: Place[] = [
     coords: { lat: 40.7216, lng: -74.0021 },
     hours: everyday("10:00-22:00", { fri: "10:00-23:00", sat: "10:00-23:00" }),
     website: "https://www.bibliothequenyc.com/",
+    reservationUrl: "https://resy.com/cities/new-york-ny/venues/bibliotheque",
     googleMapsUrl: gmaps("Bibliotheque Mercer Street SoHo"),
     authorNote:
       "A bookstore-cafe by day that turns into a candlelit wine bar by night, surrounded by 10,000 books.",
@@ -1095,6 +1118,7 @@ const RAW_PLACES: Place[] = [
     coords: { lat: 40.7266, lng: -73.9928 },
     hours: hours({ thu: "22:00-04:00", fri: "22:00-04:00", sat: "22:00-04:00" }),
     website: "https://www.acmenyc.com/",
+    reservationUrl: "https://www.sevenrooms.com/events/acme",
     googleMapsUrl: gmaps("Acme Great Jones Street NoHo"),
     authorNote:
       "A Great Jones bistro whose below-ground den spins DJ sets and cocktails deep into the night. Dance floor Thu–Sat.",
@@ -1142,6 +1166,7 @@ const RAW_PLACES: Place[] = [
     coords: { lat: 40.7267, lng: -73.9925 },
     hours: everyday("08:00-21:30", { mon: "08:00-21:00", sun: "08:00-17:00" }),
     website: "https://www.lafayetteny.com/",
+    reservationUrl: "https://resy.com/cities/new-york-ny/venues/lafayette-grand-cafe-and-bakery",
     googleMapsUrl: gmaps("Lafayette Grand Cafe Bakery NoHo"),
     authorNote:
       "The blueberry-buttermilk muffin is the legend, but the whole French pastry case (and the brasserie) is worth the detour.",
@@ -1220,6 +1245,24 @@ const RAW_PLACES: Place[] = [
     googleMapsUrl: gmaps("Van Leeuwen Ice Cream East Village"),
     authorNote:
       "The honeycomb and vegan cookie-dough scoops are the move at this East Village walk-up window.",
+  },
+  {
+    id: "fontys-bodega",
+    name: "Fonty's Bodega",
+    neighborhood: "West Village",
+    category: "food",
+    cuisine: "Indian sandwiches",
+    tags: ["grab-and-go", "indian", "long-lines"],
+    priceLevel: 2,
+    isFav: true,
+    coords: { lat: 40.733807, lng: -74.000657 },
+    hours: everyday("07:00-23:00"),
+    suggestedTimeMins: 30,
+    reservationNeeded: false,
+    website: "https://www.instagram.com/fontysdeli_dukaan/",
+    googleMapsUrl: gmaps("Fonty's Deli Dukaan 20 Christopher St New York"),
+    authorNote:
+      "MUST GO, it has the BEST Bombay sandwich I have had outside of India. Get it hot and toasted and enjoy. There are long lines but on a weekday or on odd-times of the weekend it shouldn't be bad.",
   },
 ];
 

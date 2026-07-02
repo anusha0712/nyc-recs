@@ -109,6 +109,15 @@ export default function CoverPage() {
             <span className="font-display text-2xl uppercase">Read the Recs</span>
             <span className="text-2xl" aria-hidden>🍕→</span>
           </Link>
+          <a
+            href="https://nearbycourt.com/worldcup"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="paper flex items-center justify-between bg-hotred px-4 py-4 text-paper transition-transform active:scale-[0.98] hover:-translate-y-0.5"
+          >
+            <span className="font-display text-2xl uppercase">Watch the World Cup</span>
+            <span className="text-2xl" aria-hidden>⚽↗</span>
+          </a>
           <Link
             href="/itinerary"
             className="paper flex items-center justify-between bg-park px-4 py-4 text-paper transition-transform active:scale-[0.98] hover:-translate-y-0.5"

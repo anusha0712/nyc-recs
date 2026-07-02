@@ -46,13 +46,6 @@ export default async function PlacePage({
   if (!place) notFound();
 
   const meta = CATEGORY_META[place.category];
-  // A "Book a table" link for EVERY place: the direct booking URL when we have
-  // one, otherwise a reservations search fallback.
-  const reservationHref =
-    place.reservationUrl ??
-    `https://www.google.com/search?q=${encodeURIComponent(
-      place.name + " reservations New York",
-    )}`;
 
   return (
     <main className="flex-1">
@@ -93,27 +86,39 @@ export default async function PlacePage({
           <PriceTag level={place.priceLevel} />
         </div>
 
-        {/* Reservation + booking, side by side (like the old facts row) */}
-        <div className="mt-3 grid grid-cols-2 gap-2">
-          <div className="border-2 border-ink bg-paper px-3 py-2">
+        {/* Reservation + booking. Book-a-table shows only when we have a real
+            direct booking link; walk-in spots get an honest note instead. */}
+        {place.reservationUrl ? (
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            <div className="border-2 border-ink bg-paper px-3 py-2">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-ink/50">
+                Reservation
+              </p>
+              <p className="font-display text-xl uppercase leading-none">
+                {place.reservationNeeded ? "Recommended" : "Walk-in ok"}
+              </p>
+            </div>
+            <a
+              href={place.reservationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center border-2 border-ink bg-park px-3 py-2 text-center text-paper transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
+            >
+              <span className="font-display text-lg uppercase leading-none">
+                🍽️ Book a table ↗
+              </span>
+            </a>
+          </div>
+        ) : (
+          <div className="mt-3 border-2 border-ink bg-paper px-3 py-2">
             <p className="font-mono text-[10px] uppercase tracking-widest text-ink/50">
               Reservation
             </p>
             <p className="font-display text-xl uppercase leading-none">
-              {place.reservationNeeded ? "Recommended" : "Walk-in ok"}
+              Walk-in — no reservations
             </p>
           </div>
-          <a
-            href={reservationHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center border-2 border-ink bg-park px-3 py-2 text-center text-paper transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
-          >
-            <span className="font-display text-lg uppercase leading-none">
-              🍽️ Book a table ↗
-            </span>
-          </a>
-        </div>
+        )}
 
         {/* Actions — at the top, not sticky */}
         <div className="mt-4 flex flex-wrap items-center gap-2">

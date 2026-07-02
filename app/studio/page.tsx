@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { PLACES, CATEGORY_META } from "@/data/places";
+import { PLACES, CATEGORIES, CATEGORY_META } from "@/data/places";
 import StudioEditor, { type StudioPlace } from "@/components/StudioEditor";
 
 // Dev-only curation console. 404s in production.
@@ -24,5 +24,10 @@ export default function StudioPage() {
     isFav: Boolean(p.isFav),
   }));
 
-  return <StudioEditor places={places} categories={Object.keys(CATEGORY_META)} />;
+  const categories = CATEGORIES.map((c) => ({
+    value: c,
+    label: `${CATEGORY_META[c].emoji} ${CATEGORY_META[c].label}`,
+  }));
+
+  return <StudioEditor places={places} categories={categories} />;
 }
