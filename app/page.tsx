@@ -88,7 +88,7 @@ export default function CoverPage() {
         <div className="mt-5 flex items-stretch gap-2 text-center">
           <div className="flex-1 border-2 border-ink bg-taxi px-2 py-2">
             <p className="font-display text-3xl leading-none">{stat.spots}</p>
-            <p className="font-mono text-[10px] uppercase tracking-wide">hand-picked spots</p>
+            <p className="font-mono text-[10px] uppercase tracking-wide">spots</p>
           </div>
           <div className="flex-1 border-2 border-ink bg-sky px-2 py-2 text-paper">
             <p className="font-display text-3xl leading-none">{stat.hoods}</p>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   PLACES,
   CATEGORIES,
@@ -10,9 +10,18 @@ import {
   type Category,
 } from "@/data/places";
 import { isOpenNow } from "@/lib/hours";
+import {
+  saveRecsScroll,
+  takeRecsReturn,
+  useIsomorphicLayoutEffect,
+} from "@/lib/recsScroll";
 import PlaceCard from "@/components/PlaceCard";
 
 type SortKey = "fav" | "az" | "price";
+
+// Persist the active filter set so returning from a place restores the same
+// list — otherwise a restored scroll offset would point at different content.
+const FILTERS_KEY = "dailywaddle:recsFilters";
 
 export default function RecsBrowser() {
   const [query, setQuery] = useState("");
@@ -22,6 +31,10 @@ export default function RecsBrowser() {
   const [openOnly, setOpenOnly] = useState(false);
   const [favOnly, setFavOnly] = useState(false);
   const [sort, setSort] = useState<SortKey>("fav");
+  // Defaults match the server render; persisted state is applied after mount
+  // (below) so there's no hydration mismatch.
+  const [hydrated, setHydrated] = useState(false);
+  const didRestore = useRef(false);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -64,6 +77,61 @@ export default function RecsBrowser() {
     setFavOnly(false);
     setQuery("");
   };
+
+  // Restore the filter set we left with, before the browser paints.
+  useIsomorphicLayoutEffect(() => {
+    try {
+      const raw = sessionStorage.getItem(FILTERS_KEY);
+      if (raw) {
+        const f = JSON.parse(raw);
+        if (typeof f.query === "string") setQuery(f.query);
+        if (f.cat) setCat(f.cat);
+        if (f.hood) setHood(f.hood);
+        if (f.cuisine) setCuisine(f.cuisine);
+        if (typeof f.openOnly === "boolean") setOpenOnly(f.openOnly);
+        if (typeof f.favOnly === "boolean") setFavOnly(f.favOnly);
+        if (f.sort) setSort(f.sort);
+      }
+    } catch {}
+    setHydrated(true);
+  }, []);
+
+  // Once filters are applied and the grid has laid out, jump back to where we
+  // left off — seamless, no flash to the top.
+  useIsomorphicLayoutEffect(() => {
+    if (!hydrated || didRestore.current) return;
+    didRestore.current = true;
+    const back = takeRecsReturn();
+    if (back) window.scrollTo(0, back.y);
+  }, [hydrated]);
+
+  // Persist filter changes (after the initial restore, so we don't clobber them).
+  useEffect(() => {
+    if (!hydrated) return;
+    try {
+      sessionStorage.setItem(
+        FILTERS_KEY,
+        JSON.stringify({ query, cat, hood, cuisine, openOnly, favOnly, sort }),
+      );
+    } catch {}
+  }, [hydrated, query, cat, hood, cuisine, openOnly, favOnly, sort]);
+
+  // Keep the scroll offset fresh while browsing (rAF-throttled).
+  useEffect(() => {
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        saveRecsScroll();
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
 
   return (
     <div>

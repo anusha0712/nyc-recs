@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { CATEGORY_META, type Place } from "@/data/places";
+import { markRecsReturn } from "@/lib/recsScroll";
 import PriceTag from "@/components/PriceTag";
 import OpenNowBadge from "@/components/OpenNowBadge";
 import AddToDayButton from "@/components/AddToDayButton";
@@ -41,7 +44,11 @@ export default function PlaceCard({
         </span>
       )}
 
-      <Link href={`/place/${place.id}`} className="block">
+      <Link
+        href={`/place/${place.id}`}
+        className="block"
+        onClick={() => markRecsReturn(place.id)}
+      >
         <div className="flex items-start gap-2.5">
           <span
             className={`grid h-9 w-9 shrink-0 place-items-center border-2 border-ink text-lg ${
