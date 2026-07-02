@@ -29,7 +29,7 @@ export default function MapView() {
   );
 
   return (
-    <div>
+    <div className="flex min-h-0 flex-1 flex-col">
       {/* Category filter */}
       <div className="flex gap-2 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <Chip active={cat === "all"} onClick={() => setCat("all")}>
@@ -46,8 +46,8 @@ export default function MapView() {
       </div>
 
       {/* Map frame */}
-      <div className="paper mt-1 overflow-hidden p-1.5">
-        <div className="h-[65vh] min-h-[380px] w-full overflow-hidden border-2 border-ink">
+      <div className="paper mt-1 flex min-h-0 flex-1 flex-col overflow-hidden p-1.5">
+        <div className="relative min-h-[320px] flex-1 overflow-hidden border-2 border-ink">
           <LeafletMap places={places} />
         </div>
       </div>

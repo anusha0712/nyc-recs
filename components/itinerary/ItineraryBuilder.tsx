@@ -79,7 +79,7 @@ export default function ItineraryBuilder({ sharedParam }: { sharedParam?: string
             A trip was shared with you!
           </p>
           <p className="mt-1 font-mono text-[11px] uppercase tracking-wide">
-            {countPlaces(shared)} stops across {NUM_DAYS} days.
+            {countPlaces(shared)} {countPlaces(shared) === 1 ? "stop" : "stops"} across {NUM_DAYS} days.
           </p>
           <div className="mt-2 flex gap-2">
             <button

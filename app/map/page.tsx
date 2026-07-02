@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 
 export default function MapPage() {
   return (
-    <main className="flex-1">
+    <main className="flex flex-1 flex-col">
       <Masthead compact dateline="Section C · The Map" />
-      <div className="mx-auto max-w-2xl px-4 py-5">
+      <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col px-4 py-5">
         <h2 className="font-display text-4xl uppercase leading-none sm:text-5xl">
           The <span className="text-sky">Map</span> Room
         </h2>

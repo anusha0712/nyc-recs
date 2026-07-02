@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { useEffect, useMemo } from "react";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { CATEGORY_META, type Place } from "@/data/places";
@@ -37,6 +37,20 @@ function pinIcon(place: Place) {
   });
 }
 
+// The map now lives in a flex container whose height resolves after mount, so
+// Leaflet can cache a 0px size and render blank. Re-measure once and on resize.
+function InvalidateOnResize() {
+  const map = useMap();
+  useEffect(() => {
+    const el = map.getContainer();
+    map.invalidateSize();
+    const ro = new ResizeObserver(() => map.invalidateSize());
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [map]);
+  return null;
+}
+
 export default function LeafletMap({ places }: { places: Place[] }) {
   const center = useMemo<[number, number]>(() => {
     if (places.length === 0) return [40.75, -73.98];
@@ -50,8 +64,9 @@ export default function LeafletMap({ places }: { places: Place[] }) {
       center={center}
       zoom={12}
       scrollWheelZoom={false}
-      className="h-full w-full"
+      className="absolute inset-0 h-full w-full"
     >
+      <InvalidateOnResize />
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
